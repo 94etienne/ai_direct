@@ -90,7 +90,9 @@
       color: #66788a;
     }
 
-    .stat-card, .article-card, .info-card {
+    .stat-card,
+    .article-card,
+    .info-card {
       border: 0;
       border-radius: 18px;
       box-shadow: 0 10px 35px rgba(11,31,58,.08);
@@ -163,7 +165,8 @@
       color: var(--navy);
     }
 
-    .form-control, .form-select {
+    .form-control,
+    .form-select {
       border-radius: 10px;
       padding: .75rem 1rem;
     }
@@ -180,444 +183,2490 @@
       color: #cce8f7;
     }
 
+    /* =========================================================
+       PARTNERS / ADVERTISING CAROUSEL
+       ========================================================= */
 
-.ai-chatbot-button{position:fixed;right:24px;bottom:24px;width:62px;height:62px;border:0;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff;box-shadow:0 12px 30px rgba(18,97,160,.35);z-index:1050;font-size:1.45rem}.ai-chatbot-panel{position:fixed;right:24px;bottom:98px;width:min(390px,calc(100vw - 32px));z-index:1049;border:0;border-radius:20px;overflow:hidden;box-shadow:0 20px 55px rgba(11,31,58,.22);display:none}.ai-chatbot-panel.show{display:block}.chat-header{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;padding:16px}.chat-messages{height:280px;overflow-y:auto;background:#f7fafc;padding:15px}.chat-bubble{max-width:85%;padding:10px 13px;border-radius:14px;margin-bottom:10px;font-size:.9rem}.chat-bubble.bot{background:#fff;border:1px solid #e5edf4}.chat-bubble.user{background:var(--blue);color:#fff;margin-left:auto}.file-preview{font-size:.78rem;color:#66788a;max-height:60px;overflow:auto}
+    .partners-carousel-wrapper {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      padding: 15px 0 25px;
+    }
+
+    .partners-carousel-wrapper::before,
+    .partners-carousel-wrapper::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 90px;
+      height: 100%;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .partners-carousel-wrapper::before {
+      left: 0;
+      background: linear-gradient(
+        to right,
+        #fff,
+        rgba(255,255,255,0)
+      );
+    }
+
+    .partners-carousel-wrapper::after {
+      right: 0;
+      background: linear-gradient(
+        to left,
+        #fff,
+        rgba(255,255,255,0)
+      );
+    }
+
+    .partners-track {
+      display: flex;
+      width: max-content;
+      gap: 24px;
+      animation: partnersMove 28s linear infinite;
+    }
+
+    .partners-track:hover {
+      animation-play-state: paused;
+    }
+
+    .partner-slide {
+      width: 310px;
+      flex: 0 0 310px;
+    }
+
+    .partner-card {
+      min-height: 290px;
+      transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+    }
+
+    .partner-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 18px 45px rgba(11,31,58,.15);
+    }
+
+    .partner-logo {
+      width: 70px;
+      height: 70px;
+      border-radius: 20px;
+      background: linear-gradient(
+        135deg,
+        #e9f5fb,
+        #dff4fa
+      );
+      color: var(--blue);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+
+    @keyframes partnersMove {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(
+          calc(-50% - 12px)
+        );
+      }
+    }
+
+    /* =========================================================
+       AI CHATBOT
+       ========================================================= */
+
+    .ai-chatbot-button {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      width: 62px;
+      height: 62px;
+      border: 0;
+      border-radius: 50%;
+      background: linear-gradient(
+        135deg,
+        var(--blue),
+        var(--cyan)
+      );
+      color: #fff;
+      box-shadow: 0 12px 30px rgba(18,97,160,.35);
+      z-index: 1050;
+      font-size: 1.45rem;
+    }
+
+    .ai-chatbot-panel {
+      position: fixed;
+      right: 24px;
+      bottom: 98px;
+      width: min(390px, calc(100vw - 32px));
+      z-index: 1049;
+      border: 0;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 55px rgba(11,31,58,.22);
+      display: none;
+    }
+
+    .ai-chatbot-panel.show {
+      display: block;
+    }
+
+    .chat-header {
+      background: linear-gradient(
+        135deg,
+        var(--navy),
+        var(--blue)
+      );
+      color: #fff;
+      padding: 16px;
+    }
+
+    .chat-messages {
+      height: 280px;
+      overflow-y: auto;
+      background: #f7fafc;
+      padding: 15px;
+    }
+
+    .chat-bubble {
+      max-width: 85%;
+      padding: 10px 13px;
+      border-radius: 14px;
+      margin-bottom: 10px;
+      font-size: .9rem;
+    }
+
+    .chat-bubble.bot {
+      background: #fff;
+      border: 1px solid #e5edf4;
+    }
+
+    .chat-bubble.user {
+      background: var(--blue);
+      color: #fff;
+      margin-left: auto;
+    }
+
+    .file-preview {
+      font-size: .78rem;
+      color: #66788a;
+      max-height: 60px;
+      overflow: auto;
+    }
+
+    /* =========================================================
+   MOVING STAFF CAROUSEL
+   ========================================================= */
+
+.staff-carousel {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 10px 0 25px;
+}
+
+/* Fade edges */
+.staff-carousel::before,
+.staff-carousel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 90px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.staff-carousel::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    #f4f8fc,
+    transparent
+  );
+}
+
+.staff-carousel::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    #f4f8fc,
+    transparent
+  );
+}
+
+.staff-track {
+  display: flex;
+  width: max-content;
+  gap: 24px;
+  animation: staffScroll 35s linear infinite;
+}
+
+/* Each card has fixed width so everything stays on ONE ROW */
+.staff-card-wrapper {
+  width: 350px;
+  flex: 0 0 350px;
+}
+
+/* Smooth card appearance */
+.staff-card-wrapper .article-card {
+  min-height: 100%;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+/* Pause when user points at the carousel */
+.staff-carousel:hover .staff-track {
+  animation-play-state: paused;
+}
+
+.staff-card-wrapper .article-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 18px 45px rgba(11,31,58,.16);
+}
+
+/* Continuous movement */
+@keyframes staffScroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 12px));
+  }
+}
+
+/* Tablet */
+@media (max-width: 991px) {
+  .staff-card-wrapper {
+    width: 320px;
+    flex-basis: 320px;
+  }
+
+  .staff-track {
+    gap: 20px;
+    animation-duration: 30s;
+  }
+}
+
+/* Mobile */
+@media (max-width: 575px) {
+  .staff-card-wrapper {
+    width: 285px;
+    flex-basis: 285px;
+  }
+
+  .staff-track {
+    gap: 16px;
+    animation-duration: 25s;
+  }
+
+  .staff-carousel::before,
+  .staff-carousel::after {
+    width: 40px;
+  }
+}
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 991px) {
+      .partner-slide {
+        width: 280px;
+        flex-basis: 280px;
+      }
+    }
+
     @media (max-width: 767px) {
-      .hero { padding: 65px 0; }
-      .stat-card { margin-top: 20px; }
+
+      .hero {
+        padding: 65px 0;
+      }
+
+      .stat-card {
+        margin-top: 20px;
+      }
+
+      .partners-track {
+        gap: 16px;
+        animation-duration: 22s;
+      }
+
+      .partner-slide {
+        width: 270px;
+        flex-basis: 270px;
+      }
+
+      .partners-carousel-wrapper::before,
+      .partners-carousel-wrapper::after {
+        width: 40px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<!-- Top bar -->
+<!-- =========================================================
+     TOP BAR
+     ========================================================= -->
+
 <div class="topbar py-2">
   <div class="container d-flex flex-wrap justify-content-between gap-2">
-    <span><i class="bi bi-journal-text me-1"></i> Peer-Reviewed Academic Journal</span>
-    <span class="rwanda-badge"><i class="bi bi-geo-alt-fill"></i> Rwanda | International Scope</span>
+    <span>
+      <i class="bi bi-journal-text me-1"></i>
+      Peer-Reviewed Academic Journal
+    </span>
+
+    <span class="rwanda-badge">
+      <i class="bi bi-geo-alt-fill"></i>
+      Rwanda | International Scope
+    </span>
   </div>
 </div>
 
-<!-- Navigation -->
+
+<!-- =========================================================
+     NAVIGATION
+     ========================================================= -->
+
 <nav class="navbar navbar-expand-lg bg-white sticky-top">
+
   <div class="container py-2">
+
     <a class="navbar-brand d-flex align-items-center" href="#">
+
       <span class="brand-mark">AI</span>
+
       <span>
-        <span class="brand-title d-block">AI Direct</span>
-        <small class="text-secondary">Artificial Intelligence & Data Science</small>
+        <span class="brand-title d-block">
+          AI Direct
+        </span>
+
+        <small class="text-secondary">
+          Artificial Intelligence & Data Science
+        </small>
       </span>
+
     </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#mainNav"
+      aria-controls="mainNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+
       <span class="navbar-toggler-icon"></span>
+
     </button>
 
     <div class="collapse navbar-collapse" id="mainNav">
+
       <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
-        <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#articles">Articles</a></li>
-        <li class="nav-item"><a class="nav-link" href="#scope">Scope</a></li>
-        <li class="nav-item"><a class="nav-link" href="#editorial">Board</a></li><li class="nav-item"><a class="nav-link" href="#staff">Staff</a></li><li class="nav-item"><a class="nav-link" href="#advertisements">Advertise</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-        <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
-          <a class="btn btn-primary px-4" href="#submit">Submit Article</a>
+
+        <li class="nav-item">
+          <a class="nav-link active" href="#home">
+            Home
+          </a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#about">
+            About
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#articles">
+            Articles
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#scope">
+            Scope
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#editorial">
+            Board
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#staff">
+            Staff
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#advertisements">
+            Advertise
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">
+            Contact
+          </a>
+        </li>
+
+        <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+          <a
+            class="btn btn-primary px-4"
+            href="#submit">
+            Submit Article
+          </a>
+        </li>
+
       </ul>
+
     </div>
+
   </div>
+
 </nav>
 
-<!-- Hero -->
+
+<!-- =========================================================
+     HERO
+     ========================================================= -->
+
 <section class="hero" id="home">
+
   <div class="container">
+
     <div class="row align-items-center g-5">
+
       <div class="col-lg-8">
+
         <span class="badge hero-badge rounded-pill px-3 py-2 mb-4">
           International Journal • Rwanda
         </span>
+
         <h1>AI Direct</h1>
-        <h2 class="fs-3 fw-semibold mb-3">International Journal of Artificial Intelligence and Data Science</h2>
+
+        <h2 class="fs-3 fw-semibold mb-3">
+          International Journal of Artificial Intelligence and Data Science
+        </h2>
+
         <p class="mb-4">
-          A peer-reviewed platform advancing research, innovation, responsible AI,
-          and data-driven solutions for Rwanda, Africa, and the global research community.
+          A peer-reviewed platform advancing research, innovation,
+          responsible AI, and data-driven solutions for Rwanda,
+          Africa, and the global research community.
         </p>
+
         <div class="d-flex flex-wrap gap-3">
-          <a href="#articles" class="btn btn-light btn-lg px-4">Explore Articles</a>
-          <a href="#submit" class="btn btn-outline-light btn-lg px-4">Submit Your Research</a>
+
+          <a
+            href="#articles"
+            class="btn btn-light btn-lg px-4">
+            Explore Articles
+          </a>
+
+          <a
+            href="#submit"
+            class="btn btn-outline-light btn-lg px-4">
+            Submit Your Research
+          </a>
+
         </div>
+
       </div>
+
 
       <div class="col-lg-4">
+
         <div class="bg-white text-dark rounded-4 p-4 shadow-lg">
+
           <div class="d-flex align-items-center gap-3 mb-3">
-            <div class="icon-box"><i class="bi bi-stars"></i></div>
-            <div>
-              <div class="fw-bold">AI Direct</div>
-              <small class="text-secondary">Research • Innovation • Impact</small>
+
+            <div class="icon-box">
+              <i class="bi bi-stars"></i>
             </div>
+
+            <div>
+              <div class="fw-bold">
+                AI Direct
+              </div>
+
+              <small class="text-secondary">
+                Research • Innovation • Impact
+              </small>
+            </div>
+
           </div>
+
           <hr>
-          <div class="small text-secondary mb-2">Journal Focus</div>
-          <div class="fw-semibold">Artificial Intelligence, Machine Learning, Data Science & Responsible AI</div>
-          <div class="mt-4 small text-secondary">Publication Frequency</div>
-          <div class="fw-semibold">Quarterly • 4 Issues / Year</div>
+
+          <div class="small text-secondary mb-2">
+            Journal Focus
+          </div>
+
+          <div class="fw-semibold">
+            Artificial Intelligence, Machine Learning,
+            Data Science & Responsible AI
+          </div>
+
+          <div class="mt-4 small text-secondary">
+            Publication Frequency
+          </div>
+
+          <div class="fw-semibold">
+            Quarterly • 4 Issues / Year
+          </div>
+
         </div>
+
       </div>
+
     </div>
+
   </div>
+
 </section>
 
-<!-- Stats -->
+
+<!-- =========================================================
+     STATS
+     ========================================================= -->
+
 <section class="container">
+
   <div class="card stat-card">
+
     <div class="card-body p-4 p-lg-5">
+
       <div class="row text-center g-4">
+
         <div class="col-6 col-lg-3">
-          <div class="h2 fw-bold text-primary mb-1">01</div>
-          <div class="text-secondary">Journal</div>
+          <div class="h2 fw-bold text-primary mb-1">
+            01
+          </div>
+          <div class="text-secondary">
+            Journal
+          </div>
         </div>
+
         <div class="col-6 col-lg-3">
-          <div class="h2 fw-bold text-primary mb-1">4</div>
-          <div class="text-secondary">Issues / Year</div>
+          <div class="h2 fw-bold text-primary mb-1">
+            4
+          </div>
+          <div class="text-secondary">
+            Issues / Year
+          </div>
         </div>
+
         <div class="col-6 col-lg-3">
-          <div class="h2 fw-bold text-primary mb-1">Global</div>
-          <div class="text-secondary">Author Community</div>
+          <div class="h2 fw-bold text-primary mb-1">
+            Global
+          </div>
+          <div class="text-secondary">
+            Author Community
+          </div>
         </div>
+
         <div class="col-6 col-lg-3">
-          <div class="h2 fw-bold text-primary mb-1">Peer</div>
-          <div class="text-secondary">Reviewed</div>
+          <div class="h2 fw-bold text-primary mb-1">
+            Peer
+          </div>
+          <div class="text-secondary">
+            Reviewed
+          </div>
         </div>
+
       </div>
+
     </div>
+
   </div>
+
 </section>
 
-<!-- About -->
+
+<!-- =========================================================
+     ABOUT
+     ========================================================= -->
+
 <section class="py-5 my-4" id="about">
+
   <div class="container py-lg-5">
+
     <div class="row align-items-center g-5">
+
       <div class="col-lg-6">
-        <span class="text-primary fw-bold">ABOUT THE JOURNAL</span>
-        <h2 class="section-title display-6 mt-2">Connecting AI research with real-world impact.</h2>
+
+        <span class="text-primary fw-bold">
+          ABOUT THE JOURNAL
+        </span>
+
+        <h2 class="section-title display-6 mt-2">
+          Connecting AI research with real-world impact.
+        </h2>
+
         <p class="section-subtitle mt-3">
-          AI Direct is designed as a scholarly publication for researchers, academics,
-          practitioners, and innovators working at the intersection of artificial intelligence
+          AI Direct is designed as a scholarly publication for
+          researchers, academics, practitioners, and innovators
+          working at the intersection of artificial intelligence
           and data-driven technologies.
         </p>
+
         <p>
-          The journal encourages rigorous research as well as practical applications,
-          with particular attention to challenges and opportunities in Africa and emerging economies.
+          The journal encourages rigorous research as well as
+          practical applications, with particular attention to
+          challenges and opportunities in Africa and emerging economies.
         </p>
-        <a href="#scope" class="btn btn-outline-primary">View Aims & Scope</a>
+
+        <a href="#scope" class="btn btn-outline-primary">
+          View Aims & Scope
+        </a>
+
       </div>
+
+
       <div class="col-lg-6">
+
         <div class="row g-3">
+
           <div class="col-sm-6">
+
             <div class="card info-card p-3 h-100">
-              <div class="icon-box mb-3"><i class="bi bi-shield-check"></i></div>
-              <h5 class="fw-bold">Rigorous Review</h5>
-              <p class="text-secondary small mb-0">Transparent peer-review processes designed to protect research quality.</p>
+
+              <div class="icon-box mb-3">
+                <i class="bi bi-shield-check"></i>
+              </div>
+
+              <h5 class="fw-bold">
+                Rigorous Review
+              </h5>
+
+              <p class="text-secondary small mb-0">
+                Transparent peer-review processes designed
+                to protect research quality.
+              </p>
+
             </div>
+
           </div>
+
+
           <div class="col-sm-6">
+
             <div class="card info-card p-3 h-100">
-              <div class="icon-box mb-3"><i class="bi bi-globe2"></i></div>
-              <h5 class="fw-bold">Global Reach</h5>
-              <p class="text-secondary small mb-0">Welcoming contributions from Rwanda, Africa, and researchers worldwide.</p>
+
+              <div class="icon-box mb-3">
+                <i class="bi bi-globe2"></i>
+              </div>
+
+              <h5 class="fw-bold">
+                Global Reach
+              </h5>
+
+              <p class="text-secondary small mb-0">
+                Welcoming contributions from Rwanda,
+                Africa, and researchers worldwide.
+              </p>
+
             </div>
+
           </div>
+
+
           <div class="col-sm-6">
+
             <div class="card info-card p-3 h-100">
-              <div class="icon-box mb-3"><i class="bi bi-lightbulb"></i></div>
-              <h5 class="fw-bold">Innovation</h5>
-              <p class="text-secondary small mb-0">Promoting emerging AI methods, systems, applications, and discoveries.</p>
+
+              <div class="icon-box mb-3">
+                <i class="bi bi-lightbulb"></i>
+              </div>
+
+              <h5 class="fw-bold">
+                Innovation
+              </h5>
+
+              <p class="text-secondary small mb-0">
+                Promoting emerging AI methods, systems,
+                applications, and discoveries.
+              </p>
+
             </div>
+
           </div>
+
+
           <div class="col-sm-6">
+
             <div class="card info-card p-3 h-100">
-              <div class="icon-box mb-3"><i class="bi bi-people"></i></div>
-              <h5 class="fw-bold">Community</h5>
-              <p class="text-secondary small mb-0">Building a strong research network across disciplines and regions.</p>
+
+              <div class="icon-box mb-3">
+                <i class="bi bi-people"></i>
+              </div>
+
+              <h5 class="fw-bold">
+                Community
+              </h5>
+
+              <p class="text-secondary small mb-0">
+                Building a strong research network across
+                disciplines and regions.
+              </p>
+
             </div>
+
           </div>
+
         </div>
+
       </div>
+
     </div>
+
   </div>
+
 </section>
 
-<!-- Latest Articles -->
+
+<!-- =========================================================
+     LATEST ARTICLES
+     ========================================================= -->
+
 <section class="py-5 bg-light" id="articles">
+
   <div class="container py-lg-5">
+
     <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+
       <div>
-        <span class="text-primary fw-bold">PUBLICATIONS</span>
-        <h2 class="section-title display-6 mt-2 mb-1">Latest Articles</h2>
-        <p class="section-subtitle mb-0">Featured research from AI Direct.</p>
+
+        <span class="text-primary fw-bold">
+          PUBLICATIONS
+        </span>
+
+        <h2 class="section-title display-6 mt-2 mb-1">
+          Latest Articles
+        </h2>
+
+        <p class="section-subtitle mb-0">
+          Featured research from AI Direct.
+        </p>
+
       </div>
-      <a href="#" class="btn btn-outline-primary">View All Articles</a>
+
+      <a href="#" class="btn btn-outline-primary">
+        View All Articles
+      </a>
+
     </div>
+
 
     <div class="row g-4">
-      <div class="col-md-6 col-lg-4">
-        <article class="card article-card p-4">
-          <span class="badge badge-soft rounded-pill align-self-start mb-3">Machine Learning</span>
-          <h5 class="fw-bold">Machine Learning for Intelligent Decision Support in Emerging Economies</h5>
-          <p class="text-secondary small">Exploring data-driven methods for practical decision-making and sustainable development.</p>
-          <div class="mt-auto pt-3 border-top small text-secondary">Research Article • Vol. 1, Issue 1</div>
-        </article>
-      </div>
 
       <div class="col-md-6 col-lg-4">
+
         <article class="card article-card p-4">
-          <span class="badge badge-soft rounded-pill align-self-start mb-3">Computer Vision</span>
-          <h5 class="fw-bold">Advances in Computer Vision for African Contexts</h5>
-          <p class="text-secondary small">New approaches to visual intelligence using representative datasets and real-world applications.</p>
-          <div class="mt-auto pt-3 border-top small text-secondary">Research Article • Vol. 1, Issue 1</div>
+
+          <span class="badge badge-soft rounded-pill align-self-start mb-3">
+            Machine Learning
+          </span>
+
+          <h5 class="fw-bold">
+            Machine Learning for Intelligent Decision Support in Emerging Economies
+          </h5>
+
+          <p class="text-secondary small">
+            Exploring data-driven methods for practical
+            decision-making and sustainable development.
+          </p>
+
+          <div class="mt-auto pt-3 border-top small text-secondary">
+            Research Article • Vol. 1, Issue 1
+          </div>
+
         </article>
+
       </div>
 
+
       <div class="col-md-6 col-lg-4">
+
         <article class="card article-card p-4">
-          <span class="badge badge-soft rounded-pill align-self-start mb-3">Responsible AI</span>
-          <h5 class="fw-bold">Responsible Artificial Intelligence: Ethics, Trust and Governance</h5>
-          <p class="text-secondary small">Examining responsible AI principles and their implementation in research and practice.</p>
-          <div class="mt-auto pt-3 border-top small text-secondary">Review Article • Vol. 1, Issue 1</div>
+
+          <span class="badge badge-soft rounded-pill align-self-start mb-3">
+            Computer Vision
+          </span>
+
+          <h5 class="fw-bold">
+            Advances in Computer Vision for African Contexts
+          </h5>
+
+          <p class="text-secondary small">
+            New approaches to visual intelligence using
+            representative datasets and real-world applications.
+          </p>
+
+          <div class="mt-auto pt-3 border-top small text-secondary">
+            Research Article • Vol. 1, Issue 1
+          </div>
+
         </article>
+
       </div>
+
+
+      <div class="col-md-6 col-lg-4">
+
+        <article class="card article-card p-4">
+
+          <span class="badge badge-soft rounded-pill align-self-start mb-3">
+            Responsible AI
+          </span>
+
+          <h5 class="fw-bold">
+            Responsible Artificial Intelligence: Ethics, Trust and Governance
+          </h5>
+
+          <p class="text-secondary small">
+            Examining responsible AI principles and their
+            implementation in research and practice.
+          </p>
+
+          <div class="mt-auto pt-3 border-top small text-secondary">
+            Review Article • Vol. 1, Issue 1
+          </div>
+
+        </article>
+
+      </div>
+
     </div>
+
   </div>
+
 </section>
 
-<!-- Scope -->
+
+<!-- =========================================================
+     SCOPE
+     ========================================================= -->
+
 <section class="py-5" id="scope">
+
   <div class="container py-lg-5">
-    <div class="text-center mx-auto" style="max-width:760px">
-      <span class="text-primary fw-bold">AIMS & SCOPE</span>
-      <h2 class="section-title display-6 mt-2">Research areas</h2>
+
+    <div
+      class="text-center mx-auto"
+      style="max-width:760px">
+
+      <span class="text-primary fw-bold">
+        AIMS & SCOPE
+      </span>
+
+      <h2 class="section-title display-6 mt-2">
+        Research areas
+      </h2>
+
       <p class="section-subtitle">
-        AI Direct welcomes original research, reviews, technical papers, case studies,
-        datasets, and perspectives across the following areas.
+        AI Direct welcomes original research, reviews,
+        technical papers, case studies, datasets, and
+        perspectives across the following areas.
       </p>
+
     </div>
+
 
     <div class="row g-3 mt-4">
-      <div class="col-6 col-md-4 col-lg-3"><div class="p-3 border rounded-4 h-100"><i class="bi bi-cpu text-primary me-2"></i>Artificial Intelligence</div></div>
-      <div class="col-6 col-md-4 col-lg-3"><div class="p-3 border rounded-4 h-100"><i class="bi bi-graph-up-arrow text-primary me-2"></i>Machine Learning</div></div>
-      <div class="col-6 col-md-4 col-lg-3"><div class="p-3 border rounded-4 h-100"><i class="bi bi-braces text-primary me-2"></i>Deep Learning</div></div>
-      <div class="col-6 col-md-4 col-lg-3"><div class="p-3 border rounded-4 h-100"><i class="bi bi-eye text-primary me-2"></i>Computer Vision</div></div>
-      <div class="col-6 col-md-4 col-lg-3"><div class="p-3 border rounded-4 h-100"><i class="bi bi-chat-square-text text-primary me-2"></i>NLP & LLMs</div></div>
-      <div class="col-6 col-md-4 col-lg-3"><div class="p-3 border rounded-4 h-100"><i class="bi bi-database text-primary me-2"></i>Data Science</div></div>
-      <div class="col-6 col-md-4 col-lg-3"><div class="p-3 border rounded-4 h-100"><i class="bi bi-robot text-primary me-2"></i>Robotics</div></div>
-      <div class="col-6 col-md-4 col-lg-3"><div class="p-3 border rounded-4 h-100"><i class="bi bi-heart-pulse text-primary me-2"></i>AI in Healthcare</div></div>
-      <div class="col-6 col-md-4 col-lg-3"><div class="p-3 border rounded-4 h-100"><i class="bi bi-mortarboard text-primary me-2"></i>AI in Education</div></div>
-      <div class="col-6 col-md-4 col-lg-3"><div class="p-3 border rounded-4 h-100"><i class="bi bi-tree text-primary me-2"></i>AI in Agriculture</div></div>
-      <div class="col-6 col-md-4 col-lg-3"><div class="p-3 border rounded-4 h-100"><i class="bi bi-bank text-primary me-2"></i>AI Governance</div></div>
-      <div class="col-6 col-md-4 col-lg-3"><div class="p-3 border rounded-4 h-100"><i class="bi bi-globe-africa text-primary me-2"></i>AI for Africa</div></div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="p-3 border rounded-4 h-100">
+          <i class="bi bi-cpu text-primary me-2"></i>
+          Artificial Intelligence
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="p-3 border rounded-4 h-100">
+          <i class="bi bi-graph-up-arrow text-primary me-2"></i>
+          Machine Learning
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="p-3 border rounded-4 h-100">
+          <i class="bi bi-braces text-primary me-2"></i>
+          Deep Learning
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="p-3 border rounded-4 h-100">
+          <i class="bi bi-eye text-primary me-2"></i>
+          Computer Vision
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="p-3 border rounded-4 h-100">
+          <i class="bi bi-chat-square-text text-primary me-2"></i>
+          NLP & LLMs
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="p-3 border rounded-4 h-100">
+          <i class="bi bi-database text-primary me-2"></i>
+          Data Science
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="p-3 border rounded-4 h-100">
+          <i class="bi bi-robot text-primary me-2"></i>
+          Robotics
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="p-3 border rounded-4 h-100">
+          <i class="bi bi-heart-pulse text-primary me-2"></i>
+          AI in Healthcare
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="p-3 border rounded-4 h-100">
+          <i class="bi bi-mortarboard text-primary me-2"></i>
+          AI in Education
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="p-3 border rounded-4 h-100">
+          <i class="bi bi-tree text-primary me-2"></i>
+          AI in Agriculture
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="p-3 border rounded-4 h-100">
+          <i class="bi bi-bank text-primary me-2"></i>
+          AI Governance
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="p-3 border rounded-4 h-100">
+          <i class="bi bi-globe-africa text-primary me-2"></i>
+          AI for Africa
+        </div>
+      </div>
+
     </div>
+
   </div>
+
 </section>
 
-<!-- Editorial Board -->
+
+<!-- =========================================================
+     EDITORIAL BOARD
+     ========================================================= -->
+
 <section class="py-5 bg-light" id="editorial">
+
   <div class="container py-lg-5">
+
     <div class="text-center mb-5">
-      <span class="text-primary fw-bold">EDITORIAL LEADERSHIP</span>
-      <h2 class="section-title display-6 mt-2">Editorial Board</h2>
-      <p class="section-subtitle">A multidisciplinary team of researchers and experts.</p>
+
+      <span class="text-primary fw-bold">
+        EDITORIAL LEADERSHIP
+      </span>
+
+      <h2 class="section-title display-6 mt-2">
+        Editorial Board
+      </h2>
+
+      <p class="section-subtitle">
+        A multidisciplinary team of researchers and experts.
+      </p>
+
     </div>
+
 
     <div class="row justify-content-center g-4">
+
       <div class="col-md-4">
+
         <div class="card info-card text-center p-4">
-          <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mx-auto mb-3" style="width:80px;height:80px;font-size:1.7rem;">
+
+          <div
+            class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mx-auto mb-3"
+            style="width:80px;height:80px;font-size:1.7rem;">
+
             <i class="bi bi-person"></i>
+
           </div>
-          <h5 class="fw-bold">Editor-in-Chief</h5>
-          <p class="text-secondary mb-0">To be appointed</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card info-card text-center p-4">
-          <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mx-auto mb-3" style="width:80px;height:80px;font-size:1.7rem;">
-            <i class="bi bi-people"></i>
-          </div>
-          <h5 class="fw-bold">Associate Editors</h5>
-          <p class="text-secondary mb-0">International experts in AI and Data Science</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card info-card text-center p-4">
-          <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mx-auto mb-3" style="width:80px;height:80px;font-size:1.7rem;">
-            <i class="bi bi-search"></i>
-          </div>
-          <h5 class="fw-bold">Reviewers</h5>
-          <p class="text-secondary mb-0">Expert peer-review community</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- Staff / Editorial Team -->
-<section class="py-5 bg-light" id="staff"><div class="container py-lg-5"><div class="text-center mb-5"><span class="text-primary fw-bold">OUR TEAM</span><h2 class="section-title display-6 mt-2">Editorial & Academic Staff</h2><p class="section-subtitle mx-auto" style="max-width:760px;">AI Direct brings together specialists from artificial intelligence, cybersecurity, agriculture, software engineering, economics, and data analysis.</p></div><div class="row g-4"><div class="col-md-6 col-lg-4"><div class="card article-card p-4 text-center"><div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mx-auto mb-3" style="width:82px;height:82px;font-size:1.7rem;"><i class="bi bi-shield-lock"></i></div><span class="badge badge-soft rounded-pill align-self-center mb-2">Associate Editor</span><h5 class="fw-bold">Dr. Egide NKURUNZIZA</h5><p class="text-primary fw-semibold mb-2">Cybersecurity</p><p class="text-secondary small mb-0">Contributes subject-matter expertise, peer review, and editorial support to the journal.</p></div></div><div class="col-md-6 col-lg-4"><div class="card article-card p-4 text-center"><div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mx-auto mb-3" style="width:82px;height:82px;font-size:1.7rem;"><i class="bi bi-tree"></i></div><span class="badge badge-soft rounded-pill align-self-center mb-2">Associate Editor</span><h5 class="fw-bold">Dr. Vestine MUKAMPARIRWA</h5><p class="text-primary fw-semibold mb-2">AI in Agriculture</p><p class="text-secondary small mb-0">Contributes subject-matter expertise, peer review, and editorial support to the journal.</p></div></div><div class="col-md-6 col-lg-4"><div class="card article-card p-4 text-center"><div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mx-auto mb-3" style="width:82px;height:82px;font-size:1.7rem;"><i class="bi bi-cpu"></i></div><span class="badge badge-soft rounded-pill align-self-center mb-2">Managing Editor</span><h5 class="fw-bold">Mr. Etienne NTAMBARA</h5><p class="text-primary fw-semibold mb-2">Artificial Intelligence Engineering</p><p class="text-secondary small mb-0">Contributes subject-matter expertise, peer review, and editorial support to the journal.</p></div></div><div class="col-md-6 col-lg-4"><div class="card article-card p-4 text-center"><div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mx-auto mb-3" style="width:82px;height:82px;font-size:1.7rem;"><i class="bi bi-code-slash"></i></div><span class="badge badge-soft rounded-pill align-self-center mb-2">Technical Editor</span><h5 class="fw-bold">Mr. Didace NIYIRORA</h5><p class="text-primary fw-semibold mb-2">Software Engineering</p><p class="text-secondary small mb-0">Contributes subject-matter expertise, peer review, and editorial support to the journal.</p></div></div><div class="col-md-6 col-lg-4"><div class="card article-card p-4 text-center"><div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mx-auto mb-3" style="width:82px;height:82px;font-size:1.7rem;"><i class="bi bi-bar-chart-line"></i></div><span class="badge badge-soft rounded-pill align-self-center mb-2">Associate Editor</span><h5 class="fw-bold">Mr. Robert Giscard</h5><p class="text-primary fw-semibold mb-2">Economics & AI Applications</p><p class="text-secondary small mb-0">Contributes subject-matter expertise, peer review, and editorial support to the journal.</p></div></div><div class="col-md-6 col-lg-4"><div class="card article-card p-4 text-center"><div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mx-auto mb-3" style="width:82px;height:82px;font-size:1.7rem;"><i class="bi bi-graph-up"></i></div><span class="badge badge-soft rounded-pill align-self-center mb-2">Data & Research Analyst</span><h5 class="fw-bold">Mr. Jimy</h5><p class="text-primary fw-semibold mb-2">Research Analytics</p><p class="text-secondary small mb-0">Contributes subject-matter expertise, peer review, and editorial support to the journal.</p></div></div></div></div></section>
+          <h5 class="fw-bold">
+            Editor-in-Chief
+          </h5>
 
-<!-- Submission CTA --><!-- Advertisement Section -->
-<section class="py-5" id="advertisements">
-  <div class="container py-lg-4">
-    <div class="text-center mb-5">
-      <span class="text-primary fw-bold">PARTNERS & ADVERTISING</span>
-      <h2 class="section-title display-6 mt-2">Academic & Research Networks</h2>
-      <p class="section-subtitle mx-auto" style="max-width:760px;">AI Direct connects with academic institutions and research platforms to promote scholarly communication, research visibility, and collaboration.</p>
-    </div>
-
-    <div class="row g-4 mb-5">
-      <div class="col-6 col-lg-3"><div class="card info-card h-100 text-center p-4"><div class="icon-box mx-auto mb-3"><i class="bi bi-building"></i></div><h5 class="fw-bold">Rwanda Polytechnic</h5><p class="text-secondary small">Academic and technical education, innovation, and applied research.</p><span class="badge badge-soft rounded-pill">Academic Institution</span></div></div>
-      <div class="col-6 col-lg-3"><div class="card info-card h-100 text-center p-4"><div class="icon-box mx-auto mb-3"><i class="bi bi-mortarboard"></i></div><h5 class="fw-bold">University of Rwanda</h5><p class="text-secondary small">Higher education, scientific research, and academic collaboration.</p><span class="badge badge-soft rounded-pill">Academic Institution</span></div></div>
-      <div class="col-6 col-lg-3"><div class="card info-card h-100 text-center p-4"><div class="icon-box mx-auto mb-3"><i class="bi bi-people"></i></div><h5 class="fw-bold">ResearchGate</h5><p class="text-secondary small">Research networking, scholarly communication, and collaboration.</p><span class="badge badge-soft rounded-pill">Research Platform</span></div></div>
-      <div class="col-6 col-lg-3"><div class="card info-card h-100 text-center p-4"><div class="icon-box mx-auto mb-3"><i class="bi bi-search"></i></div><h5 class="fw-bold">Google Scholar</h5><p class="text-secondary small">Scholarly literature discovery and research visibility.</p><span class="badge badge-soft rounded-pill">Research Platform</span></div></div>
-    </div>
-
-    <div class="text-center mb-4"><h3 class="fw-bold">Advertise with AI Direct</h3><p class="section-subtitle mx-auto" style="max-width:760px;">Connect your organization, technology, research service, event, or academic initiative with our research community.</p></div>
-    <div class="row g-4">
-      <div class="col-lg-7"><div class="card info-card p-4 p-lg-5 h-100"><h4 class="fw-bold">Advertising Opportunities</h4><div class="row g-3 mt-2"><div class="col-md-6"><div class="border rounded-4 p-3 h-100"><h6 class="fw-bold">Website Banner</h6><p class="small text-secondary mb-0">Promote your organization or service on selected journal pages.</p></div></div><div class="col-md-6"><div class="border rounded-4 p-3 h-100"><h6 class="fw-bold">Issue Advertising</h6><p class="small text-secondary mb-0">Promote products, services, publications, or initiatives alongside an issue.</p></div></div><div class="col-md-6"><div class="border rounded-4 p-3 h-100"><h6 class="fw-bold">Events & Conferences</h6><p class="small text-secondary mb-0">Advertise conferences, workshops, and academic events.</p></div></div><div class="col-md-6"><div class="border rounded-4 p-3 h-100"><h6 class="fw-bold">Institutional Partners</h6><p class="small text-secondary mb-0">Showcase universities, laboratories, and technology organizations.</p></div></div></div><a href="mailto:advertising@aidirect.rw" class="btn btn-primary mt-4">Request Advertising Information</a></div></div>
-      <div class="col-lg-5"><div class="card info-card p-4 p-lg-5 h-100"><span class="badge badge-soft rounded-pill align-self-start mb-3">ADVERTISEMENT</span><div class="rounded-4 p-4 text-center border bg-light h-100 d-flex flex-column justify-content-center"><i class="bi bi-megaphone display-4 text-primary mb-3"></i><h4 class="fw-bold">Your Advertisement Here</h4><p class="text-secondary">This space can display rotating banners, partner announcements, research events, or sponsored academic content.</p><a href="mailto:advertising@aidirect.rw" class="btn btn-outline-primary align-self-center">Become an Advertiser</a></div></div></div>
-    </div>
-    <div class="alert alert-light border mt-4"><i class="bi bi-info-circle text-primary me-2"></i><strong>Academic & research networks:</strong> these organizations and platforms are listed for scholarly visibility and networking. Their appearance here does not by itself indicate a formal partnership with AI Direct.</div>
-    <div class="alert alert-light border mt-3"><i class="bi bi-shield-check text-primary me-2"></i><strong>Editorial independence:</strong> advertising should not influence peer review or editorial decisions.</div>
-  </div>
-</section>
-
-
-<section class="py-5" id="submit">
-  <div class="container py-4">
-    <div class="cta p-4 p-lg-5">
-      <div class="row align-items-center g-4">
-        <div class="col-lg-8">
-          <span class="badge bg-light text-primary mb-3">CALL FOR PAPERS</span>
-          <h2 class="fw-bold">Have research to share?</h2>
-          <p class="mb-0 text-white-50">
-            Submit original research in artificial intelligence, machine learning,
-            data science, and related fields.
+          <p class="text-secondary mb-0">
+            To be appointed
           </p>
+
         </div>
-        <div class="col-lg-4 text-lg-end">
-          <a href="mailto:editor@aidirect.rw" class="btn btn-light btn-lg px-4">
-            <i class="bi bi-send me-2"></i>Submit Manuscript
-          </a>
-        </div>
+
       </div>
+
+
+      <div class="col-md-4">
+
+        <div class="card info-card text-center p-4">
+
+          <div
+            class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mx-auto mb-3"
+            style="width:80px;height:80px;font-size:1.7rem;">
+
+            <i class="bi bi-people"></i>
+
+          </div>
+
+          <h5 class="fw-bold">
+            Associate Editors
+          </h5>
+
+          <p class="text-secondary mb-0">
+            International experts in AI and Data Science
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="col-md-4">
+
+        <div class="card info-card text-center p-4">
+
+          <div
+            class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mx-auto mb-3"
+            style="width:80px;height:80px;font-size:1.7rem;">
+
+            <i class="bi bi-search"></i>
+
+          </div>
+
+          <h5 class="fw-bold">
+            Reviewers
+          </h5>
+
+          <p class="text-secondary mb-0">
+            Expert peer-review community
+          </p>
+
+        </div>
+
+      </div>
+
     </div>
+
   </div>
+
 </section>
 
-<!-- Contact -->
-<section class="py-5" id="contact">
-  <div class="container py-lg-4">
-    <div class="row g-5">
-      <div class="col-lg-5">
-        <span class="text-primary fw-bold">CONTACT</span>
-        <h2 class="section-title display-6 mt-2">Get in touch</h2>
-        <p class="section-subtitle">
-          Contact the editorial office for submissions, partnerships, reviewer opportunities,
-          and general enquiries.
+
+<!-- =========================================================
+     STAFF
+     ========================================================= -->
+
+<section class="py-5 bg-light" id="staff">
+
+  <div class="container py-lg-5">
+
+    <div class="text-center mb-5">
+
+      <span class="text-primary fw-bold">
+        OUR TEAM
+      </span>
+
+      <h2 class="section-title display-6 mt-2">
+        Editorial & Academic Staff
+      </h2>
+
+      <p
+        class="section-subtitle mx-auto"
+        style="max-width:760px;">
+
+        AI Direct brings together specialists from artificial
+        intelligence, cybersecurity, agriculture, software
+        engineering, economics, and data analysis.
+
+      </p>
+
+    </div>
+
+
+<!-- Moving Editorial Staff Carousel -->
+<div class="staff-carousel">
+  <div class="staff-track">
+
+    <!-- Staff 1 -->
+    <div class="staff-card-wrapper">
+      <div class="card article-card p-4 text-center h-100">
+        <div
+          class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mx-auto mb-3"
+          style="width:82px;height:82px;font-size:1.7rem;">
+          <i class="bi bi-shield-lock"></i>
+        </div>
+
+        <span class="badge badge-soft rounded-pill align-self-center mb-2">
+          Associate Editor
+        </span>
+
+        <h5 class="fw-bold">
+          Dr. Egide NKURUNZIZA
+        </h5>
+
+        <p class="text-primary fw-semibold mb-2">
+          Cybersecurity
         </p>
 
-        <div class="mt-4">
-          <p><i class="bi bi-envelope text-primary me-2"></i> editor@aidirect.rw</p>
-          <p><i class="bi bi-geo-alt text-primary me-2"></i> Rwanda</p>
-          <p><i class="bi bi-globe2 text-primary me-2"></i> AI Direct — International Journal</p>
-        </div>
+        <p class="text-secondary small mb-0">
+          Contributes subject-matter expertise, peer review,
+          and editorial support to the journal.
+        </p>
       </div>
+    </div>
+
+
+    <!-- Staff 2 -->
+    <div class="staff-card-wrapper">
+      <div class="card article-card p-4 text-center h-100">
+        <div
+          class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mx-auto mb-3"
+          style="width:82px;height:82px;font-size:1.7rem;">
+          <i class="bi bi-tree"></i>
+        </div>
+
+        <span class="badge badge-soft rounded-pill align-self-center mb-2">
+          Associate Editor
+        </span>
+
+        <h5 class="fw-bold">
+          Dr. Vestine MUKAMPARIRWA
+        </h5>
+
+        <p class="text-primary fw-semibold mb-2">
+          AI in Agriculture
+        </p>
+
+        <p class="text-secondary small mb-0">
+          Contributes subject-matter expertise, peer review,
+          and editorial support to the journal.
+        </p>
+      </div>
+    </div>
+
+
+    <!-- Staff 3 -->
+    <div class="staff-card-wrapper">
+      <div class="card article-card p-4 text-center h-100">
+        <div
+          class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mx-auto mb-3"
+          style="width:82px;height:82px;font-size:1.7rem;">
+          <i class="bi bi-cpu"></i>
+        </div>
+
+        <span class="badge badge-soft rounded-pill align-self-center mb-2">
+          Managing Editor
+        </span>
+
+        <h5 class="fw-bold">
+          Mr. Etienne NTAMBARA
+        </h5>
+
+        <p class="text-primary fw-semibold mb-2">
+          Artificial Intelligence Engineering
+        </p>
+
+        <p class="text-secondary small mb-0">
+          Contributes subject-matter expertise, peer review,
+          and editorial support to the journal.
+        </p>
+      </div>
+    </div>
+
+
+    <!-- Staff 4 -->
+    <div class="staff-card-wrapper">
+      <div class="card article-card p-4 text-center h-100">
+        <div
+          class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mx-auto mb-3"
+          style="width:82px;height:82px;font-size:1.7rem;">
+          <i class="bi bi-code-slash"></i>
+        </div>
+
+        <span class="badge badge-soft rounded-pill align-self-center mb-2">
+          Technical Editor
+        </span>
+
+        <h5 class="fw-bold">
+          Mr. Didace NIYIRORA
+        </h5>
+
+        <p class="text-primary fw-semibold mb-2">
+          Software Engineering
+        </p>
+
+        <p class="text-secondary small mb-0">
+          Contributes subject-matter expertise, peer review,
+          and editorial support to the journal.
+        </p>
+      </div>
+    </div>
+
+
+    <!-- Staff 5 -->
+    <div class="staff-card-wrapper">
+      <div class="card article-card p-4 text-center h-100">
+        <div
+          class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mx-auto mb-3"
+          style="width:82px;height:82px;font-size:1.7rem;">
+          <i class="bi bi-bar-chart-line"></i>
+        </div>
+
+        <span class="badge badge-soft rounded-pill align-self-center mb-2">
+          Associate Editor
+        </span>
+
+        <h5 class="fw-bold">
+          Mr. Robert Giscard
+        </h5>
+
+        <p class="text-primary fw-semibold mb-2">
+          Economics & AI Applications
+        </p>
+
+        <p class="text-secondary small mb-0">
+          Contributes subject-matter expertise, peer review,
+          and editorial support to the journal.
+        </p>
+      </div>
+    </div>
+
+
+    <!-- Staff 6 -->
+    <div class="staff-card-wrapper">
+      <div class="card article-card p-4 text-center h-100">
+        <div
+          class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mx-auto mb-3"
+          style="width:82px;height:82px;font-size:1.7rem;">
+          <i class="bi bi-graph-up"></i>
+        </div>
+
+        <span class="badge badge-soft rounded-pill align-self-center mb-2">
+          Data & Research Analyst
+        </span>
+
+        <h5 class="fw-bold">
+          Mr. Jimy
+        </h5>
+
+        <p class="text-primary fw-semibold mb-2">
+          Research Analytics
+        </p>
+
+        <p class="text-secondary small mb-0">
+          Contributes subject-matter expertise, peer review,
+          and editorial support to the journal.
+        </p>
+      </div>
+    </div>
+
+
+    <!-- DUPLICATE SET FOR SEAMLESS LOOP -->
+
+    <!-- Staff 1 -->
+    <div class="staff-card-wrapper">
+      <div class="card article-card p-4 text-center h-100">
+        <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mx-auto mb-3"
+             style="width:82px;height:82px;font-size:1.7rem;">
+          <i class="bi bi-shield-lock"></i>
+        </div>
+        <span class="badge badge-soft rounded-pill align-self-center mb-2">
+          Associate Editor
+        </span>
+        <h5 class="fw-bold">Dr. Egide NKURUNZIZA</h5>
+        <p class="text-primary fw-semibold mb-2">Cybersecurity</p>
+        <p class="text-secondary small mb-0">
+          Contributes subject-matter expertise, peer review,
+          and editorial support to the journal.
+        </p>
+      </div>
+    </div>
+
+    <!-- Staff 2 -->
+    <div class="staff-card-wrapper">
+      <div class="card article-card p-4 text-center h-100">
+        <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mx-auto mb-3"
+             style="width:82px;height:82px;font-size:1.7rem;">
+          <i class="bi bi-tree"></i>
+        </div>
+        <span class="badge badge-soft rounded-pill align-self-center mb-2">
+          Associate Editor
+        </span>
+        <h5 class="fw-bold">Dr. Vestine MUKAMPARIRWA</h5>
+        <p class="text-primary fw-semibold mb-2">AI in Agriculture</p>
+        <p class="text-secondary small mb-0">
+          Contributes subject-matter expertise, peer review,
+          and editorial support to the journal.
+        </p>
+      </div>
+    </div>
+
+    <!-- Staff 3 -->
+    <div class="staff-card-wrapper">
+      <div class="card article-card p-4 text-center h-100">
+        <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mx-auto mb-3"
+             style="width:82px;height:82px;font-size:1.7rem;">
+          <i class="bi bi-cpu"></i>
+        </div>
+        <span class="badge badge-soft rounded-pill align-self-center mb-2">
+          Managing Editor
+        </span>
+        <h5 class="fw-bold">Mr. Etienne NTAMBARA</h5>
+        <p class="text-primary fw-semibold mb-2">
+          Artificial Intelligence Engineering
+        </p>
+        <p class="text-secondary small mb-0">
+          Contributes subject-matter expertise, peer review,
+          and editorial support to the journal.
+        </p>
+      </div>
+    </div>
+
+    <!-- Staff 4 -->
+    <div class="staff-card-wrapper">
+      <div class="card article-card p-4 text-center h-100">
+        <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mx-auto mb-3"
+             style="width:82px;height:82px;font-size:1.7rem;">
+          <i class="bi bi-code-slash"></i>
+        </div>
+        <span class="badge badge-soft rounded-pill align-self-center mb-2">
+          Technical Editor
+        </span>
+        <h5 class="fw-bold">Mr. Didace NIYIRORA</h5>
+        <p class="text-primary fw-semibold mb-2">Software Engineering</p>
+        <p class="text-secondary small mb-0">
+          Contributes subject-matter expertise, peer review,
+          and editorial support to the journal.
+        </p>
+      </div>
+    </div>
+
+    <!-- Staff 5 -->
+    <div class="staff-card-wrapper">
+      <div class="card article-card p-4 text-center h-100">
+        <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mx-auto mb-3"
+             style="width:82px;height:82px;font-size:1.7rem;">
+          <i class="bi bi-bar-chart-line"></i>
+        </div>
+        <span class="badge badge-soft rounded-pill align-self-center mb-2">
+          Associate Editor
+        </span>
+        <h5 class="fw-bold">Mr. Robert Giscard</h5>
+        <p class="text-primary fw-semibold mb-2">
+          Economics & AI Applications
+        </p>
+        <p class="text-secondary small mb-0">
+          Contributes subject-matter expertise, peer review,
+          and editorial support to the journal.
+        </p>
+      </div>
+    </div>
+
+    <!-- Staff 6 -->
+    <div class="staff-card-wrapper">
+      <div class="card article-card p-4 text-center h-100">
+        <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mx-auto mb-3"
+             style="width:82px;height:82px;font-size:1.7rem;">
+          <i class="bi bi-graph-up"></i>
+        </div>
+        <span class="badge badge-soft rounded-pill align-self-center mb-2">
+          Data & Research Analyst
+        </span>
+        <h5 class="fw-bold">Mr. Jimy</h5>
+        <p class="text-primary fw-semibold mb-2">Research Analytics</p>
+        <p class="text-secondary small mb-0">
+          Contributes subject-matter expertise, peer review,
+          and editorial support to the journal.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     PARTNERS & ADVERTISING
+     MOVING CAROUSEL
+     ========================================================= -->
+
+<section class="py-5" id="advertisements">
+
+  <div class="container py-lg-4">
+
+    <div class="text-center mb-5">
+
+      <span class="text-primary fw-bold">
+        PARTNERS & ADVERTISING
+      </span>
+
+      <h2 class="section-title display-6 mt-2">
+        Academic & Research Networks
+      </h2>
+
+      <p
+        class="section-subtitle mx-auto"
+        style="max-width:760px;">
+
+        AI Direct connects with academic institutions and
+        research platforms to promote scholarly communication,
+        research visibility, and collaboration.
+
+      </p>
+
+    </div>
+
+
+    <!-- =====================================================
+         MOVING PARTNERS CAROUSEL
+         ===================================================== -->
+
+    <div class="partners-carousel-wrapper">
+
+      <div class="partners-track">
+
+
+        <!-- SET 1 -->
+
+
+        <div class="partner-slide">
+
+          <div class="card info-card partner-card h-100 text-center p-4">
+
+            <div class="partner-logo mx-auto mb-3">
+              <i class="bi bi-building"></i>
+            </div>
+
+            <h5 class="fw-bold">
+              Rwanda Polytechnic
+            </h5>
+
+            <p class="text-secondary small">
+              Academic and technical education,
+              innovation, and applied research.
+            </p>
+
+            <span class="badge badge-soft rounded-pill">
+              Academic Institution
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="partner-slide">
+
+          <div class="card info-card partner-card h-100 text-center p-4">
+
+            <div class="partner-logo mx-auto mb-3">
+              <i class="bi bi-mortarboard"></i>
+            </div>
+
+            <h5 class="fw-bold">
+              University of Rwanda
+            </h5>
+
+            <p class="text-secondary small">
+              Higher education, scientific research,
+              and academic collaboration.
+            </p>
+
+            <span class="badge badge-soft rounded-pill">
+              Academic Institution
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="partner-slide">
+
+          <div class="card info-card partner-card h-100 text-center p-4">
+
+            <div class="partner-logo mx-auto mb-3">
+              <i class="bi bi-people"></i>
+            </div>
+
+            <h5 class="fw-bold">
+              ResearchGate
+            </h5>
+
+            <p class="text-secondary small">
+              Research networking, scholarly communication,
+              and collaboration.
+            </p>
+
+            <span class="badge badge-soft rounded-pill">
+              Research Platform
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="partner-slide">
+
+          <div class="card info-card partner-card h-100 text-center p-4">
+
+            <div class="partner-logo mx-auto mb-3">
+              <i class="bi bi-search"></i>
+            </div>
+
+            <h5 class="fw-bold">
+              Google Scholar
+            </h5>
+
+            <p class="text-secondary small">
+              Scholarly literature discovery and
+              research visibility.
+            </p>
+
+            <span class="badge badge-soft rounded-pill">
+              Research Platform
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- SET 2
+             Duplicate cards for seamless infinite movement
+        -->
+
+
+        <div class="partner-slide">
+
+          <div class="card info-card partner-card h-100 text-center p-4">
+
+            <div class="partner-logo mx-auto mb-3">
+              <i class="bi bi-building"></i>
+            </div>
+
+            <h5 class="fw-bold">
+              Rwanda Polytechnic
+            </h5>
+
+            <p class="text-secondary small">
+              Academic and technical education,
+              innovation, and applied research.
+            </p>
+
+            <span class="badge badge-soft rounded-pill">
+              Academic Institution
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="partner-slide">
+
+          <div class="card info-card partner-card h-100 text-center p-4">
+
+            <div class="partner-logo mx-auto mb-3">
+              <i class="bi bi-mortarboard"></i>
+            </div>
+
+            <h5 class="fw-bold">
+              University of Rwanda
+            </h5>
+
+            <p class="text-secondary small">
+              Higher education, scientific research,
+              and academic collaboration.
+            </p>
+
+            <span class="badge badge-soft rounded-pill">
+              Academic Institution
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="partner-slide">
+
+          <div class="card info-card partner-card h-100 text-center p-4">
+
+            <div class="partner-logo mx-auto mb-3">
+              <i class="bi bi-people"></i>
+            </div>
+
+            <h5 class="fw-bold">
+              ResearchGate
+            </h5>
+
+            <p class="text-secondary small">
+              Research networking, scholarly communication,
+              and collaboration.
+            </p>
+
+            <span class="badge badge-soft rounded-pill">
+              Research Platform
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="partner-slide">
+
+          <div class="card info-card partner-card h-100 text-center p-4">
+
+            <div class="partner-logo mx-auto mb-3">
+              <i class="bi bi-search"></i>
+            </div>
+
+            <h5 class="fw-bold">
+              Google Scholar
+            </h5>
+
+            <p class="text-secondary small">
+              Scholarly literature discovery and
+              research visibility.
+            </p>
+
+            <span class="badge badge-soft rounded-pill">
+              Research Platform
+            </span>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+    <!-- ADVERTISING INTRO -->
+
+    <div class="text-center mb-4 mt-4">
+
+      <h3 class="fw-bold">
+        Advertise with AI Direct
+      </h3>
+
+      <p
+        class="section-subtitle mx-auto"
+        style="max-width:760px;">
+
+        Connect your organization, technology, research
+        service, event, or academic initiative with our
+        research community.
+
+      </p>
+
+    </div>
+
+
+    <div class="row g-4">
+
+
+      <!-- ADVERTISING OPPORTUNITIES -->
 
       <div class="col-lg-7">
-        <form class="card info-card p-4" onsubmit="event.preventDefault(); alert('Thank you. The contact form is ready to connect to your backend.');">
-          <div class="row g-3">
+
+        <div class="card info-card p-4 p-lg-5 h-100">
+
+          <h4 class="fw-bold">
+            Advertising Opportunities
+          </h4>
+
+          <div class="row g-3 mt-2">
+
             <div class="col-md-6">
-              <label class="form-label fw-semibold">Name</label>
-              <input class="form-control" type="text" placeholder="Your name" required>
+
+              <div class="border rounded-4 p-3 h-100">
+
+                <h6 class="fw-bold">
+                  Website Banner
+                </h6>
+
+                <p class="small text-secondary mb-0">
+                  Promote your organization or service
+                  on selected journal pages.
+                </p>
+
+              </div>
+
             </div>
+
+
             <div class="col-md-6">
-              <label class="form-label fw-semibold">Email</label>
-              <input class="form-control" type="email" placeholder="you@example.com" required>
+
+              <div class="border rounded-4 p-3 h-100">
+
+                <h6 class="fw-bold">
+                  Issue Advertising
+                </h6>
+
+                <p class="small text-secondary mb-0">
+                  Promote products, services, publications,
+                  or initiatives alongside an issue.
+                </p>
+
+              </div>
+
             </div>
-            <div class="col-12">
-              <label class="form-label fw-semibold">Subject</label>
-              <input class="form-control" type="text" placeholder="How can we help?" required>
+
+
+            <div class="col-md-6">
+
+              <div class="border rounded-4 p-3 h-100">
+
+                <h6 class="fw-bold">
+                  Events & Conferences
+                </h6>
+
+                <p class="small text-secondary mb-0">
+                  Advertise conferences, workshops,
+                  and academic events.
+                </p>
+
+              </div>
+
             </div>
-            <div class="col-12">
-              <label class="form-label fw-semibold">Message</label>
-              <textarea class="form-control" rows="5" placeholder="Write your message..." required></textarea>
+
+
+            <div class="col-md-6">
+
+              <div class="border rounded-4 p-3 h-100">
+
+                <h6 class="fw-bold">
+                  Institutional Partners
+                </h6>
+
+                <p class="small text-secondary mb-0">
+                  Showcase universities, laboratories,
+                  and technology organizations.
+                </p>
+
+              </div>
+
             </div>
-            <div class="col-12">
-              <button class="btn btn-primary px-4" type="submit">Send Message</button>
-            </div>
+
           </div>
-        </form>
+
+
+          <a
+            href="mailto:advertising@aidirect.rw"
+            class="btn btn-primary mt-4">
+
+            Request Advertising Information
+
+          </a>
+
+        </div>
+
       </div>
+
+
+      <!-- ADVERTISEMENT CARD -->
+
+      <div class="col-lg-5">
+
+        <div class="card info-card p-4 p-lg-5 h-100">
+
+          <span class="badge badge-soft rounded-pill align-self-start mb-3">
+            ADVERTISEMENT
+          </span>
+
+          <div
+            class="rounded-4 p-4 text-center border bg-light h-100 d-flex flex-column justify-content-center">
+
+            <i
+              class="bi bi-megaphone display-4 text-primary mb-3">
+            </i>
+
+            <h4 class="fw-bold">
+              Your Advertisement Here
+            </h4>
+
+            <p class="text-secondary">
+              This space can display rotating banners,
+              partner announcements, research events,
+              or sponsored academic content.
+            </p>
+
+            <a
+              href="mailto:advertising@aidirect.rw"
+              class="btn btn-outline-primary align-self-center">
+
+              Become an Advertiser
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
+
+
+    <!-- DISCLAIMER -->
+
+    <div class="alert alert-light border mt-4">
+
+      <i class="bi bi-info-circle text-primary me-2"></i>
+
+      <strong>
+        Academic & research networks:
+      </strong>
+
+      these organizations and platforms are listed
+      for scholarly visibility and networking. Their
+      appearance here does not by itself indicate a
+      formal partnership with AI Direct.
+
+    </div>
+
+
+    <div class="alert alert-light border mt-3">
+
+      <i class="bi bi-shield-check text-primary me-2"></i>
+
+      <strong>
+        Editorial independence:
+      </strong>
+
+      advertising should not influence peer review
+      or editorial decisions.
+
+    </div>
+
   </div>
+
 </section>
 
-<!-- AI Direct Chatbot -->
-<button class="ai-chatbot-button" id="chatbotToggle" type="button" aria-label="Open AI Direct AI Assistant" title="AI Direct AI Assistant"><i class="bi bi-robot"></i></button><div class="card ai-chatbot-panel" id="chatbotPanel"><div class="chat-header d-flex align-items-center justify-content-between"><div><i class="bi bi-stars me-2"></i><strong>AI Direct Assistant</strong><small class="d-block text-white-50">Ask about the journal</small></div><button class="btn btn-sm btn-link text-white" id="chatbotClose"><i class="bi bi-x-lg"></i></button></div><div class="chat-messages" id="chatMessages"><div class="chat-bubble bot">Hello! Ask about submissions, scope, policies, or upload a document/image.</div></div><div class="p-3 bg-white"><input class="form-control form-control-sm mb-2" id="chatFile" type="file" accept="image/*,.pdf,.doc,.docx,.txt,.csv,.xlsx"><div class="file-preview mb-2" id="filePreview"></div><div class="input-group"><input class="form-control" id="chatInput" placeholder="Type your question..."><button class="btn btn-primary" id="chatSend"><i class="bi bi-send"></i></button></div><small class="text-secondary d-block mt-2">Frontend demo — connect an AI backend/API for live responses.</small></div></div>
 
-<!-- Footer -->
-<footer class="pt-5 pb-4">
-  <div class="container">
-    <div class="row g-4">
+<!-- =========================================================
+     SUBMISSION CTA
+     ========================================================= -->
+
+<section class="py-5" id="submit">
+
+  <div class="container py-4">
+
+    <div class="cta p-4 p-lg-5">
+
+      <div class="row align-items-center g-4">
+
+        <div class="col-lg-8">
+
+          <span class="badge bg-light text-primary mb-3">
+            CALL FOR PAPERS
+          </span>
+
+          <h2 class="fw-bold">
+            Have research to share?
+          </h2>
+
+          <p class="mb-0 text-white-50">
+
+            Submit original research in artificial intelligence,
+            machine learning, data science, and related fields.
+
+          </p>
+
+        </div>
+
+
+        <div class="col-lg-4 text-lg-end">
+
+          <a
+            href="mailto:editor@aidirect.rw"
+            class="btn btn-light btn-lg px-4">
+
+            <i class="bi bi-send me-2"></i>
+            Submit Manuscript
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     CONTACT
+     ========================================================= -->
+
+<section class="py-5" id="contact">
+
+  <div class="container py-lg-4">
+
+    <div class="row g-5">
+
       <div class="col-lg-5">
-        <h4 class="text-white fw-bold">AI Direct</h4>
-        <p>
-          International Journal of Artificial Intelligence and Data Science.
-          A Rwanda-based journal with an international research vision.
+
+        <span class="text-primary fw-bold">
+          CONTACT
+        </span>
+
+        <h2 class="section-title display-6 mt-2">
+          Get in touch
+        </h2>
+
+        <p class="section-subtitle">
+
+          Contact the editorial office for submissions,
+          partnerships, reviewer opportunities,
+          and general enquiries.
+
         </p>
+
+
+        <div class="mt-4">
+
+          <p>
+            <i class="bi bi-envelope text-primary me-2"></i>
+            editor@aidirect.rw
+          </p>
+
+          <p>
+            <i class="bi bi-geo-alt text-primary me-2"></i>
+            Rwanda
+          </p>
+
+          <p>
+            <i class="bi bi-globe2 text-primary me-2"></i>
+            AI Direct — International Journal
+          </p>
+
+        </div>
+
       </div>
 
-      <div class="col-6 col-lg-2">
-        <h6 class="text-white">Journal</h6>
-        <div class="d-grid gap-2 small mt-3">
-          <a href="#about">About</a>
-          <a href="#scope">Aims & Scope</a>
-          <a href="#editorial">Editorial Board</a>
-          <a href="#">Policies</a>
-        </div>
+
+      <div class="col-lg-7">
+
+        <form
+          class="card info-card p-4"
+          onsubmit="event.preventDefault(); alert('Thank you. The contact form is ready to connect to your backend.');">
+
+          <div class="row g-3">
+
+            <div class="col-md-6">
+
+              <label class="form-label fw-semibold">
+                Name
+              </label>
+
+              <input
+                class="form-control"
+                type="text"
+                placeholder="Your name"
+                required>
+
+            </div>
+
+
+            <div class="col-md-6">
+
+              <label class="form-label fw-semibold">
+                Email
+              </label>
+
+              <input
+                class="form-control"
+                type="email"
+                placeholder="you@example.com"
+                required>
+
+            </div>
+
+
+            <div class="col-12">
+
+              <label class="form-label fw-semibold">
+                Subject
+              </label>
+
+              <input
+                class="form-control"
+                type="text"
+                placeholder="How can we help?"
+                required>
+
+            </div>
+
+
+            <div class="col-12">
+
+              <label class="form-label fw-semibold">
+                Message
+              </label>
+
+              <textarea
+                class="form-control"
+                rows="5"
+                placeholder="Write your message..."
+                required></textarea>
+
+            </div>
+
+
+            <div class="col-12">
+
+              <button
+                class="btn btn-primary px-4"
+                type="submit">
+
+                Send Message
+
+              </button>
+
+            </div>
+
+          </div>
+
+        </form>
+
       </div>
 
-      <div class="col-6 col-lg-2">
-        <h6 class="text-white">Authors</h6>
-        <div class="d-grid gap-2 small mt-3">
-          <a href="#submit">Submit</a>
-          <a href="#">Author Guidelines</a>
-          <a href="#">Publication Ethics</a>
-          <a href="#">Peer Review</a>
-        </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     AI DIRECT CHATBOT
+     ========================================================= -->
+
+<button
+  class="ai-chatbot-button"
+  id="chatbotToggle"
+  type="button"
+  aria-label="Open AI Direct AI Assistant"
+  title="AI Direct AI Assistant">
+
+  <i class="bi bi-robot"></i>
+
+</button>
+
+
+<div
+  class="card ai-chatbot-panel"
+  id="chatbotPanel">
+
+
+  <div
+    class="chat-header d-flex align-items-center justify-content-between">
+
+    <div>
+
+      <i class="bi bi-stars me-2"></i>
+
+      <strong>
+        AI Direct Assistant
+      </strong>
+
+      <small class="d-block text-white-50">
+        Ask about the journal
+      </small>
+
+    </div>
+
+
+    <button
+      class="btn btn-sm btn-link text-white"
+      id="chatbotClose">
+
+      <i class="bi bi-x-lg"></i>
+
+    </button>
+
+  </div>
+
+
+  <div
+    class="chat-messages"
+    id="chatMessages">
+
+    <div class="chat-bubble bot">
+
+      Hello! Ask about submissions, scope,
+      policies, or upload a document/image.
+
+    </div>
+
+  </div>
+
+
+  <div class="p-3 bg-white">
+
+    <input
+      class="form-control form-control-sm mb-2"
+      id="chatFile"
+      type="file"
+      accept="image/*,.pdf,.doc,.docx,.txt,.csv,.xlsx">
+
+    <div
+      class="file-preview mb-2"
+      id="filePreview">
+    </div>
+
+
+    <div class="input-group">
+
+      <input
+        class="form-control"
+        id="chatInput"
+        placeholder="Type your question...">
+
+      <button
+        class="btn btn-primary"
+        id="chatSend">
+
+        <i class="bi bi-send"></i>
+
+      </button>
+
+    </div>
+
+
+    <small class="text-secondary d-block mt-2">
+
+      Frontend demo — connect an AI backend/API
+      for live responses.
+
+    </small>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+
+<footer class="pt-5 pb-4">
+
+  <div class="container">
+
+    <div class="row g-4">
+
+      <div class="col-lg-5">
+
+        <h4 class="text-white fw-bold">
+          AI Direct
+        </h4>
+
+        <p>
+
+          International Journal of Artificial Intelligence
+          and Data Science. A Rwanda-based journal with
+          an international research vision.
+
+        </p>
+
       </div>
+
+
+      <div class="col-6 col-lg-2">
+
+        <h6 class="text-white">
+          Journal
+        </h6>
+
+        <div class="d-grid gap-2 small mt-3">
+
+          <a href="#about">
+            About
+          </a>
+
+          <a href="#scope">
+            Aims & Scope
+          </a>
+
+          <a href="#editorial">
+            Editorial Board
+          </a>
+
+          <a href="#">
+            Policies
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="col-6 col-lg-2">
+
+        <h6 class="text-white">
+          Authors
+        </h6>
+
+        <div class="d-grid gap-2 small mt-3">
+
+          <a href="#submit">
+            Submit
+          </a>
+
+          <a href="#">
+            Author Guidelines
+          </a>
+
+          <a href="#">
+            Publication Ethics
+          </a>
+
+          <a href="#">
+            Peer Review
+          </a>
+
+        </div>
+
+      </div>
+
 
       <div class="col-lg-3">
-        <h6 class="text-white">Connect</h6>
+
+        <h6 class="text-white">
+          Connect
+        </h6>
+
         <div class="d-flex gap-3 mt-3 fs-5">
-          <a href="#"><i class="bi bi-linkedin"></i></a>
-          <a href="#"><i class="bi bi-twitter-x"></i></a>
-          <a href="#"><i class="bi bi-facebook"></i></a>
-          <a href="#"><i class="bi bi-envelope"></i></a>
+
+          <a href="#">
+            <i class="bi bi-linkedin"></i>
+          </a>
+
+          <a href="#">
+            <i class="bi bi-twitter-x"></i>
+          </a>
+
+          <a href="#">
+            <i class="bi bi-facebook"></i>
+          </a>
+
+          <a href="#">
+            <i class="bi bi-envelope"></i>
+          </a>
+
         </div>
+
       </div>
+
     </div>
+
 
     <hr class="border-secondary my-4">
-    <div class="d-flex flex-wrap justify-content-between gap-2 small">
-      <span>© 2026 AI Direct. All rights reserved.</span>
-      <span>Rwanda • Artificial Intelligence • Data Science</span>
+
+
+    <div
+      class="d-flex flex-wrap justify-content-between gap-2 small">
+
+      <span>
+        © 2026 AI Direct. All rights reserved.
+      </span>
+
+      <span>
+        Rwanda • Artificial Intelligence • Data Science
+      </span>
+
     </div>
+
   </div>
+
 </footer>
 
-<script>const t=document.getElementById('chatbotToggle'),p=document.getElementById('chatbotPanel'),c=document.getElementById('chatbotClose'),i=document.getElementById('chatInput'),b=document.getElementById('chatSend'),m=document.getElementById('chatMessages'),f=document.getElementById('chatFile'),v=document.getElementById('filePreview');t.onclick=()=>{p.classList.toggle('show');if(p.classList.contains('show'))i.focus()};c.onclick=()=>p.classList.remove('show');function add(x,k){let e=document.createElement('div');e.className='chat-bubble '+k;e.textContent=x;m.appendChild(e);m.scrollTop=m.scrollHeight}function send(){let x=i.value.trim();if(!x)return;add(x,'user');i.value='';setTimeout(()=>add('Thanks. This is the AI Direct frontend assistant demo. Connect it to an AI backend/API for live responses.','bot'),400)}b.onclick=send;i.onkeydown=e=>{if(e.key==='Enter')send()};f.onchange=()=>{v.textContent=f.files[0]?'Selected: '+f.files[0].name:''};</script>
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+
+<script>
+
+  /* =========================================================
+     AI CHATBOT
+     ========================================================= */
+
+  const chatbotToggle =
+    document.getElementById('chatbotToggle');
+
+  const chatbotPanel =
+    document.getElementById('chatbotPanel');
+
+  const chatbotClose =
+    document.getElementById('chatbotClose');
+
+  const chatInput =
+    document.getElementById('chatInput');
+
+  const chatSend =
+    document.getElementById('chatSend');
+
+  const chatMessages =
+    document.getElementById('chatMessages');
+
+  const chatFile =
+    document.getElementById('chatFile');
+
+  const filePreview =
+    document.getElementById('filePreview');
+
+
+  chatbotToggle.onclick = () => {
+
+    chatbotPanel.classList.toggle('show');
+
+    if (chatbotPanel.classList.contains('show')) {
+      chatInput.focus();
+    }
+
+  };
+
+
+  chatbotClose.onclick = () => {
+
+    chatbotPanel.classList.remove('show');
+
+  };
+
+
+  function addChatMessage(text, type) {
+
+    const element =
+      document.createElement('div');
+
+    element.className =
+      'chat-bubble ' + type;
+
+    element.textContent =
+      text;
+
+    chatMessages.appendChild(element);
+
+    chatMessages.scrollTop =
+      chatMessages.scrollHeight;
+
+  }
+
+
+  function sendMessage() {
+
+    const text =
+      chatInput.value.trim();
+
+    if (!text) {
+      return;
+    }
+
+    addChatMessage(text, 'user');
+
+    chatInput.value = '';
+
+
+    setTimeout(() => {
+
+      addChatMessage(
+        'Thanks. This is the AI Direct frontend assistant demo. Connect it to an AI backend/API for live responses.',
+        'bot'
+      );
+
+    }, 400);
+
+  }
+
+
+  chatSend.onclick =
+    sendMessage;
+
+
+  chatInput.onkeydown =
+    event => {
+
+      if (event.key === 'Enter') {
+        sendMessage();
+      }
+
+    };
+
+
+  chatFile.onchange =
+    () => {
+
+      if (chatFile.files[0]) {
+
+        filePreview.textContent =
+          'Selected: ' +
+          chatFile.files[0].name;
+
+      } else {
+
+        filePreview.textContent =
+          '';
+
+      }
+
+    };
+
+
+</script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
