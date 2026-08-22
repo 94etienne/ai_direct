@@ -510,6 +510,65 @@
         width: 40px;
       }
     }
+
+
+    /* =========================================================
+       RESEARCH PAPER PAGINATION & LIVE SEARCH
+       ========================================================= */
+    #articleSearchArea {
+      border-radius: 16px;
+    }
+
+    #articleSearchArea .input-group-text {
+      border-right: 0;
+    }
+
+    #articleSearchArea .form-control {
+      border-left: 0;
+    }
+
+    #articleSearchArea .form-control:focus {
+      box-shadow: none;
+      border-color: #dee2e6;
+    }
+
+    .article-item {
+      transition: opacity .2s ease, transform .2s ease;
+    }
+
+    .pagination .page-link {
+      color: var(--blue);
+      border-radius: 10px;
+      margin: 0 3px;
+      border-color: #dce7f0;
+    }
+
+    .pagination .page-item.active .page-link {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+
+    .pagination .page-item.disabled .page-link {
+      color: #9aaabd;
+      background: #f8fafc;
+    }
+
+    .pagination .page-link:hover {
+      background: #eaf6fb;
+      border-color: #b9dbea;
+    }
+
+    @media (max-width: 575px) {
+      #articlePagination {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .pagination .page-link {
+        padding: .5rem .7rem;
+      }
+    }
   </style>
 </head>
 
@@ -943,117 +1002,89 @@
      ========================================================= -->
 
 <section class="py-5 bg-light" id="articles">
-
   <div class="container py-lg-5">
-
     <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
-
       <div>
+        <span class="text-primary fw-bold">PUBLICATIONS</span>
+        <h2 class="section-title display-6 mt-2 mb-1">Latest Articles</h2>
+        <p class="section-subtitle mb-0">Featured research from AI Direct.</p>
+      </div>
+      <button type="button" class="btn btn-outline-primary" id="liveSearchToggle">
+        <i class="bi bi-search me-2"></i>Live Search
+      </button>
+    </div>
 
-        <span class="text-primary fw-bold">
-          PUBLICATIONS
+    <div id="articleSearchArea" class="card border-0 shadow-sm p-3 mb-4 d-none">
+      <div class="input-group">
+        <span class="input-group-text bg-white">
+          <i class="bi bi-search"></i>
         </span>
-
-        <h2 class="section-title display-6 mt-2 mb-1">
-          Latest Articles
-        </h2>
-
-        <p class="section-subtitle mb-0">
-          Featured research from AI Direct.
-        </p>
-
+        <input
+          type="search"
+          id="articleSearch"
+          class="form-control"
+          placeholder="Search research papers by title, topic, type, or issue..."
+          autocomplete="off"
+          aria-label="Search research papers">
+        <button type="button" class="btn btn-outline-secondary" id="clearArticleSearch">
+          Clear
+        </button>
       </div>
-
-      <a href="#" class="btn btn-outline-primary">
-        View All Articles
-      </a>
-
+      <div class="small text-secondary mt-2" id="articleSearchStatus"></div>
     </div>
 
+    <div class="row g-4" id="articlesGrid">
 
-    <div class="row g-4">
-
-      <div class="col-md-6 col-lg-4">
-
-        <article class="card article-card p-4">
-
-          <span class="badge badge-soft rounded-pill align-self-start mb-3">
-            Machine Learning
-          </span>
-
-          <h5 class="fw-bold">
-            Machine Learning for Intelligent Decision Support in Emerging Economies
-          </h5>
-
-          <p class="text-secondary small">
-            Exploring data-driven methods for practical
-            decision-making and sustainable development.
-          </p>
-
-          <div class="mt-auto pt-3 border-top small text-secondary">
-            Research Article • Vol. 1, Issue 1
-          </div>
-
+      <div class="col-md-6 col-lg-4 article-item">
+        <article class="card article-card p-4" data-title="Machine Learning for Intelligent Decision Support in Emerging Economies" data-category="Machine Learning" data-type="Research Article" data-issue="Vol. 1, Issue 1">
+          <span class="badge badge-soft rounded-pill align-self-start mb-3">Machine Learning</span>
+          <h5 class="fw-bold">Machine Learning for Intelligent Decision Support in Emerging Economies</h5>
+          <p class="text-secondary small">Exploring data-driven methods for practical decision-making and sustainable development.</p>
+          <div class="mt-auto pt-3 border-top small text-secondary">Research Article • Vol. 1, Issue 1</div>
         </article>
-
       </div>
 
-
-      <div class="col-md-6 col-lg-4">
-
-        <article class="card article-card p-4">
-
-          <span class="badge badge-soft rounded-pill align-self-start mb-3">
-            Computer Vision
-          </span>
-
-          <h5 class="fw-bold">
-            Advances in Computer Vision for African Contexts
-          </h5>
-
-          <p class="text-secondary small">
-            New approaches to visual intelligence using
-            representative datasets and real-world applications.
-          </p>
-
-          <div class="mt-auto pt-3 border-top small text-secondary">
-            Research Article • Vol. 1, Issue 1
-          </div>
-
+      <div class="col-md-6 col-lg-4 article-item">
+        <article class="card article-card p-4" data-title="Machine Learning for Intelligent Decision Support in Emerging Economies" data-category="Machine Learning" data-type="Research Article" data-issue="Vol. 1, Issue 1">
+          <span class="badge badge-soft rounded-pill align-self-start mb-3">Machine Learning</span>
+          <h5 class="fw-bold">Machine Learning for Intelligent Decision Support in Emerging Economies</h5>
+          <p class="text-secondary small">Exploring data-driven methods for practical decision-making and sustainable development.</p>
+          <div class="mt-auto pt-3 border-top small text-secondary">Research Article • Vol. 1, Issue 1</div>
         </article>
-
       </div>
 
-
-      <div class="col-md-6 col-lg-4">
-
-        <article class="card article-card p-4">
-
-          <span class="badge badge-soft rounded-pill align-self-start mb-3">
-            Responsible AI
-          </span>
-
-          <h5 class="fw-bold">
-            Responsible Artificial Intelligence: Ethics, Trust and Governance
-          </h5>
-
-          <p class="text-secondary small">
-            Examining responsible AI principles and their
-            implementation in research and practice.
-          </p>
-
-          <div class="mt-auto pt-3 border-top small text-secondary">
-            Review Article • Vol. 1, Issue 1
-          </div>
-
+      <div class="col-md-6 col-lg-4 article-item">
+        <article class="card article-card p-4" data-title="Advances in Computer Vision for African Contexts" data-category="Computer Vision" data-type="Research Article" data-issue="Vol. 1, Issue 1">
+          <span class="badge badge-soft rounded-pill align-self-start mb-3">Computer Vision</span>
+          <h5 class="fw-bold">Advances in Computer Vision for African Contexts</h5>
+          <p class="text-secondary small">New approaches to visual intelligence using representative datasets and real-world applications.</p>
+          <div class="mt-auto pt-3 border-top small text-secondary">Research Article • Vol. 1, Issue 1</div>
         </article>
+      </div>
 
+      <div class="col-md-6 col-lg-4 article-item">
+        <article class="card article-card p-4" data-title="Responsible Artificial Intelligence: Ethics, Trust and Governance" data-category="Responsible AI" data-type="Review Article" data-issue="Vol. 1, Issue 1">
+          <span class="badge badge-soft rounded-pill align-self-start mb-3">Responsible AI</span>
+          <h5 class="fw-bold">Responsible Artificial Intelligence: Ethics, Trust and Governance</h5>
+          <p class="text-secondary small">Examining responsible AI principles and their implementation in research and practice.</p>
+          <div class="mt-auto pt-3 border-top small text-secondary">Review Article • Vol. 1, Issue 1</div>
+        </article>
       </div>
 
     </div>
 
+    <div id="noArticlesFound" class="alert alert-light border text-center d-none mt-4">
+      <i class="bi bi-search text-primary me-2"></i>
+      No research papers match your search.
+    </div>
+
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 mt-5">
+      <div class="small text-secondary" id="paginationInfo" aria-live="polite"></div>
+      <nav aria-label="Research paper pagination">
+        <ul class="pagination mb-0" id="articlePagination"></ul>
+      </nav>
+    </div>
   </div>
-
 </section>
 
 
@@ -2537,6 +2568,150 @@
      ========================================================= -->
 
 <script>
+
+
+
+  /* =========================================================
+     RESEARCH PAPERS: 3 PER PAGE + LIVE SEARCH
+     ========================================================= */
+  (() => {
+    const pageSize = 3;
+    let currentPage = 1;
+    let filteredArticles = [];
+
+    const articles = Array.from(document.querySelectorAll('#articlesGrid .article-item'));
+    const grid = document.getElementById('articlesGrid');
+    const pagination = document.getElementById('articlePagination');
+    const paginationInfo = document.getElementById('paginationInfo');
+    const searchArea = document.getElementById('articleSearchArea');
+    const searchInput = document.getElementById('articleSearch');
+    const searchToggle = document.getElementById('liveSearchToggle');
+    const clearSearch = document.getElementById('clearArticleSearch');
+    const searchStatus = document.getElementById('articleSearchStatus');
+    const noResults = document.getElementById('noArticlesFound');
+
+    function getSearchText(item) {
+      const article = item.querySelector('article');
+      return [
+        article.dataset.title,
+        article.dataset.category,
+        article.dataset.type,
+        article.dataset.issue,
+        article.querySelector('p')?.textContent || ''
+      ].join(' ').toLowerCase();
+    }
+
+    function applyFilter() {
+      const query = searchInput.value.trim().toLowerCase();
+      filteredArticles = query
+        ? articles.filter(item => getSearchText(item).includes(query))
+        : [...articles];
+
+      currentPage = 1;
+      render();
+    }
+
+    function render() {
+      articles.forEach(item => {
+        item.style.display = 'none';
+      });
+
+      const totalPages = Math.max(1, Math.ceil(filteredArticles.length / pageSize));
+      if (currentPage > totalPages) currentPage = totalPages;
+
+      const start = (currentPage - 1) * pageSize;
+      const visible = filteredArticles.slice(start, start + pageSize);
+
+      visible.forEach(item => {
+        item.style.display = '';
+      });
+
+      noResults.classList.toggle('d-none', filteredArticles.length !== 0);
+
+      if (filteredArticles.length) {
+        const first = start + 1;
+        const last = Math.min(start + pageSize, filteredArticles.length);
+        paginationInfo.textContent =
+          `Showing ${first}-${last} of ${filteredArticles.length} research papers`;
+      } else {
+        paginationInfo.textContent = 'Showing 0 research papers';
+      }
+
+      const query = searchInput.value.trim();
+      searchStatus.textContent = query
+        ? `${filteredArticles.length} result${filteredArticles.length === 1 ? '' : 's'} for "${query}"`
+        : `${articles.length} research papers available`;
+
+      renderPagination(totalPages);
+    }
+
+    function renderPagination(totalPages) {
+      pagination.innerHTML = '';
+
+      if (totalPages <= 1) return;
+
+      const addPage = (label, page, disabled = false, active = false, icon = '') => {
+        const li = document.createElement('li');
+        li.className = `page-item${disabled ? ' disabled' : ''}${active ? ' active' : ''}`;
+
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'page-link';
+        button.disabled = disabled;
+        button.setAttribute('aria-label', label);
+        if (active) button.setAttribute('aria-current', 'page');
+
+        if (icon) {
+          button.innerHTML = `<i class="bi ${icon}"></i><span class="d-none d-sm-inline ms-1">${label}</span>`;
+        } else {
+          button.textContent = label;
+        }
+
+        if (!disabled) {
+          button.addEventListener('click', () => {
+            currentPage = page;
+            render();
+            document.getElementById('articles').scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          });
+        }
+
+        li.appendChild(button);
+        pagination.appendChild(li);
+      };
+
+      addPage('Previous', currentPage - 1, currentPage === 1, false, 'bi-chevron-left');
+
+      for (let page = 1; page <= totalPages; page++) {
+        addPage(String(page), page, false, page === currentPage);
+      }
+
+      addPage('Next', currentPage + 1, currentPage === totalPages, false, 'bi-chevron-right');
+    }
+
+    searchToggle.addEventListener('click', () => {
+      searchArea.classList.toggle('d-none');
+      if (!searchArea.classList.contains('d-none')) {
+        searchInput.focus();
+      } else {
+        searchInput.value = '';
+        applyFilter();
+      }
+    });
+
+    searchInput.addEventListener('input', applyFilter);
+
+    clearSearch.addEventListener('click', () => {
+      searchInput.value = '';
+      applyFilter();
+      searchInput.focus();
+    });
+
+    filteredArticles = [...articles];
+    render();
+  })();
 
   /* =========================================================
      AI CHATBOT
