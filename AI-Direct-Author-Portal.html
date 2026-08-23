@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Direct | Author Submission Portal</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0b1f3a;
+    --blue: #1261a0;
+    --cyan: #19a7ce;
+    --light: #f4f8fc;
+    --text: #243447;
+    --grey: #66788a;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: var(--light);
+    color: var(--text);
+  }
+
+  .topbar {
+    background: #fff;
+    border-bottom: 1px solid #e5edf4;
+  }
+
+  .topbar-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .brand-mark {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--blue), var(--cyan));
+    color: #fff;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .brand-title {
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.1;
+  }
+
+  .brand-sub {
+    font-size: 11px;
+    color: var(--grey);
+    font-weight: 600;
+  }
+
+  .session-box {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .session-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    text-align: right;
+  }
+
+  .session-email {
+    font-size: 12px;
+    color: var(--grey);
+    text-align: right;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .btn-primary {
+    background: var(--blue);
+    color: #fff;
+    padding: 11px 20px;
+  }
+
+  .btn-primary:disabled {
+    background: #9fb7cc;
+    cursor: not-allowed;
+  }
+
+  .btn-soft {
+    background: #eaf6fb;
+    color: var(--blue);
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .btn-block { width: 100%; }
+
+  .page {
+    max-width: 780px;
+    margin: 36px auto;
+    padding: 0 20px;
+  }
+
+  .page-narrow { max-width: 420px; }
+  .page-medium { max-width: 680px; }
+  .page-small { max-width: 520px; text-align: center; }
+
+  .card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 10px 35px rgba(11,31,58,.08);
+    padding: 28px;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+
+  .tab-btn {
+    flex: 1;
+    padding: 9px 0;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 13px;
+    background: #eef3f8;
+    color: var(--grey);
+    font-family: inherit;
+  }
+
+  .tab-btn.active {
+    background: var(--blue);
+    color: #fff;
+  }
+
+  h1, h2 { color: var(--navy); margin: 0; }
+  h1 { font-size: 24px; font-weight: 800; }
+  h2 { font-size: 19px; font-weight: 800; }
+
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--blue);
+    letter-spacing: .5px;
+  }
+
+  .subtext {
+    font-size: 13px;
+    color: var(--grey);
+    margin: 4px 0 20px;
+  }
+
+  .field { display: block; margin-bottom: 16px; }
+
+  .field-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .field-hint {
+    display: block;
+    font-size: 12px;
+    color: var(--grey);
+    margin-top: 4px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #dce7f0;
+    font-size: 14px;
+    color: var(--text);
+    outline: none;
+    font-family: inherit;
+    resize: vertical;
+  }
+
+  input:focus, textarea:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(18,97,160,0.12);
+  }
+
+  .error-banner {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    background: #fdecec;
+    color: #9a3131;
+    border: 1px solid #f6c6c6;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+
+  .notice-banner {
+    margin-top: 14px;
+    font-size: 12px;
+    color: var(--grey);
+    background: #fff8e6;
+    border: 1px solid #f3e3ad;
+    border-radius: 10px;
+    padding: 10px 12px;
+    line-height: 1.5;
+  }
+
+  .notice-banner strong { color: #8a6d1a; }
+
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 40px;
+  }
+
+  .empty-state i { font-size: 28px; color: var(--grey); margin-bottom: 10px; display: block; }
+
+  .sub-list { display: flex; flex-direction: column; gap: 12px; }
+
+  .sub-row {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 10px 35px rgba(11,31,58,.08);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .sub-title { font-weight: 800; color: var(--navy); font-size: 15px; margin-bottom: 4px; }
+  .sub-meta { font-size: 12px; color: var(--grey); margin-bottom: 8px; }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--blue);
+    background: #eaf6fb;
+    border-radius: 999px;
+    padding: 3px 10px;
+  }
+
+  .back-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    color: var(--grey);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 14px;
+    padding: 0;
+    font-family: inherit;
+  }
+
+  .corresponding-box {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background: var(--light);
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin-bottom: 16px;
+    font-size: 13px;
+  }
+
+  .checkbox-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 22px;
+    font-size: 13px;
+  }
+
+  .checkbox-row input { margin-top: 3px; }
+
+  .confirm-box {
+    background: var(--light);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: left;
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .confirm-box div { margin-bottom: 6px; }
+  .confirm-box div:last-child { margin-bottom: 0; }
+
+  .loading-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--grey);
+    font-size: 14px;
+  }
+
+  .spin {
+    animation: spin 0.8s linear infinite;
+    display: inline-block;
+  }
+
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  .hidden { display: none !important; }
+
+  .file-name {
+    display: block;
+    font-size: 12px;
+    color: var(--grey);
+    margin-top: 6px;
+  }
+
+  .file-error {
+    display: block;
+    font-size: 12px;
+    color: #9a3131;
+    margin-top: 6px;
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="brand-mark">AI</div>
+      <div>
+        <div class="brand-title">AI Direct</div>
+        <div class="brand-sub">Author Submission Portal</div>
+      </div>
+    </div>
+    <div class="session-box hidden" id="sessionBox">
+      <div>
+        <div class="session-name" id="sessionName"></div>
+        <div class="session-email" id="sessionEmail"></div>
+      </div>
+      <button class="btn btn-soft" id="logoutBtn"><i class="bi bi-box-arrow-right"></i> Sign out</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== AUTH VIEW ===================== -->
+<div class="page page-narrow" id="authView">
+  <div class="card">
+    <div class="tabs">
+      <button class="tab-btn active" id="tabLogin">Sign in</button>
+      <button class="tab-btn" id="tabRegister">Create account</button>
+    </div>
+
+    <h2 id="authTitle">Corresponding author sign-in</h2>
+    <p class="subtext" id="authSubtext">Sign in to submit a manuscript or view your submissions.</p>
+
+    <div class="error-banner hidden" id="authError"></div>
+
+    <form id="loginForm">
+      <label class="field">
+        <span class="field-label"><i class="bi bi-envelope"></i> Email</span>
+        <input type="email" id="loginEmail" placeholder="you@institution.edu" autocomplete="email">
+      </label>
+      <label class="field">
+        <span class="field-label"><i class="bi bi-lock"></i> Password</span>
+        <input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password">
+      </label>
+      <button type="submit" class="btn btn-primary btn-block" id="loginSubmit">
+        <i class="bi bi-box-arrow-in-right"></i> Sign in
+      </button>
+    </form>
+
+    <form id="registerForm" class="hidden">
+      <label class="field">
+        <span class="field-label"><i class="bi bi-person"></i> Full name</span>
+        <input type="text" id="regName" placeholder="Jane Uwimana">
+      </label>
+      <label class="field">
+        <span class="field-label"><i class="bi bi-building"></i> Institution / Affiliation</span>
+        <input type="text" id="regAffiliation" placeholder="University of Rwanda">
+      </label>
+      <label class="field">
+        <span class="field-label"><i class="bi bi-envelope"></i> Email</span>
+        <input type="email" id="regEmail" placeholder="you@institution.edu" autocomplete="email">
+      </label>
+      <label class="field">
+        <span class="field-label"><i class="bi bi-lock"></i> Password</span>
+        <input type="password" id="regPassword" placeholder="••••••••" autocomplete="new-password">
+        <span class="field-hint">Prototype only — do not reuse a real password.</span>
+      </label>
+      <button type="submit" class="btn btn-primary btn-block" id="registerSubmit">
+        <i class="bi bi-person-plus"></i> Create account
+      </button>
+    </form>
+  </div>
+
+  <div class="notice-banner">
+    <strong>Prototype notice:</strong> this demo stores accounts and manuscripts so you can try the full flow,
+    but it isn't connected to real authentication or long-term storage — don't use a password you use elsewhere.
+  </div>
+</div>
+
+<!-- ===================== DASHBOARD VIEW ===================== -->
+<div class="page hidden" id="dashboardView">
+  <div class="dashboard-header">
+    <div>
+      <div class="eyebrow">DASHBOARD</div>
+      <h1>Your submissions</h1>
+    </div>
+    <button class="btn btn-primary" id="newSubmissionBtn"><i class="bi bi-send"></i> New submission</button>
+  </div>
+
+  <div class="error-banner hidden" id="dashboardError"></div>
+
+  <div class="loading-row" id="dashboardLoading"><i class="bi bi-arrow-repeat spin"></i> Loading submissions…</div>
+
+  <div class="card empty-state hidden" id="dashboardEmpty">
+    <i class="bi bi-inbox"></i>
+    <div style="font-weight:700; color:var(--navy); margin-bottom:4px;">No submissions yet</div>
+    <div style="font-size:13px; color:var(--grey); margin-bottom:18px;">
+      Submit your first manuscript directly from your account — no email needed.
+    </div>
+    <button class="btn btn-primary" id="emptyNewSubmissionBtn"><i class="bi bi-send"></i> Start a new submission</button>
+  </div>
+
+  <div class="sub-list hidden" id="subList"></div>
+</div>
+
+<!-- ===================== NEW SUBMISSION VIEW ===================== -->
+<div class="page page-medium hidden" id="newSubmissionView">
+  <button class="back-link" id="backToDashboardBtn"><i class="bi bi-arrow-left"></i> Back to dashboard</button>
+
+  <div class="card">
+    <div class="eyebrow">NEW SUBMISSION</div>
+    <h1 style="margin:4px 0 20px; font-size:22px;">Submit your manuscript</h1>
+
+    <div class="error-banner hidden" id="submitError"></div>
+
+    <form id="submissionForm">
+      <label class="field">
+        <span class="field-label"><i class="bi bi-file-earmark-text"></i> Manuscript title</span>
+        <input type="text" id="msTitle" placeholder="A concise, specific, and informative title">
+      </label>
+
+      <label class="field">
+        <span class="field-label"><i class="bi bi-people"></i> Authors and affiliations</span>
+        <textarea rows="3" id="msAuthors" placeholder="Jane Uwimana¹, John Mugisha² — ¹University of Rwanda, Kigali, Rwanda; ²Rwanda Polytechnic, Kigali, Rwanda"></textarea>
+        <span class="field-hint">List all authors with their institution, city, and country.</span>
+      </label>
+
+      <div class="corresponding-box">
+        <i class="bi bi-person-check" style="color:var(--blue);"></i>
+        <span>Corresponding author: <strong id="correspondingLabel"></strong></span>
+      </div>
+
+      <label class="field">
+        <span class="field-label"><i class="bi bi-file-earmark-text"></i> Abstract</span>
+        <textarea rows="5" id="msAbstract" placeholder="150–250 words summarizing background, objective, methods, key results, and conclusion."></textarea>
+      </label>
+
+      <label class="field">
+        <span class="field-label"><i class="bi bi-tags"></i> Keywords</span>
+        <input type="text" id="msKeywords" placeholder="machine learning; data science; responsible AI">
+        <span class="field-hint">4–6 keywords, separated by semicolons.</span>
+      </label>
+
+      <label class="field">
+        <span class="field-label"><i class="bi bi-cloud-upload"></i> Manuscript file (.docx)</span>
+        <input type="file" id="msFile" accept=".docx">
+        <span class="field-hint">Official journal template, up to 3.5 MB.</span>
+        <span class="file-name hidden" id="fileNameLabel"></span>
+        <span class="file-error hidden" id="fileErrorLabel"></span>
+      </label>
+
+      <label class="field">
+        <span class="field-label"><i class="bi bi-envelope"></i> Cover message</span>
+        <textarea rows="3" id="msCover" placeholder="Briefly confirm the manuscript's originality and that it isn't under consideration elsewhere."></textarea>
+      </label>
+
+      <label class="checkbox-row">
+        <input type="checkbox" id="msConfirmOriginal">
+        <span>I confirm this manuscript is original work, is not under review or published elsewhere, and complies with AI Direct's publication ethics.</span>
+      </label>
+
+      <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+        <i class="bi bi-send"></i> Submit manuscript
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- ===================== CONFIRMATION VIEW ===================== -->
+<div class="page page-small hidden" id="confirmView">
+  <div class="card">
+    <i class="bi bi-check-circle-fill" style="font-size:40px; color:var(--blue); margin-bottom:12px; display:block;"></i>
+    <h2>Manuscript submitted</h2>
+    <p class="subtext">Your manuscript has been received directly through your author account.</p>
+    <div class="confirm-box">
+      <div><strong style="color:var(--navy);">Reference:</strong> <span id="confirmId"></span></div>
+      <div><strong style="color:var(--navy);">Title:</strong> <span id="confirmTitle"></span></div>
+      <div><strong style="color:var(--navy);">Submitted:</strong> <span id="confirmDate"></span></div>
+    </div>
+    <button class="btn btn-primary btn-block" id="confirmDoneBtn">Return to dashboard</button>
+  </div>
+</div>
+
+<script>
+(() => {
+  const MAX_FILE_BYTES = 3.5 * 1024 * 1024;
+
+  let session = null;
+  let pendingFile = null;
+  let lastSubmission = null;
+
+  // ---------- helpers ----------
+
+  function $(id) { return document.getElementById(id); }
+  function show(id) { $(id).classList.remove("hidden"); }
+  function hide(id) { $(id).classList.add("hidden"); }
+
+  function fmtDate(iso) {
+    try {
+      return new Date(iso).toLocaleString(undefined, {
+        year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit",
+      });
+    } catch {
+      return iso;
+    }
+  }
+
+  function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result.split(",")[1]);
+      reader.onerror = () => reject(new Error("Could not read the file."));
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function base64ToBlob(base64, mime) {
+    const bytes = atob(base64);
+    const arr = new Uint8Array(bytes.length);
+    for (let i = 0; i < bytes.length; i++) arr[i] = bytes.charCodeAt(i);
+    return new Blob([arr], { type: mime });
+  }
+
+  function setError(id, message) {
+    const el = $(id);
+    if (!message) { el.classList.add("hidden"); el.textContent = ""; return; }
+    el.textContent = message;
+    el.classList.remove("hidden");
+  }
+
+  function setBusy(btnId, busy, label, iconClass) {
+    const btn = $(btnId);
+    btn.disabled = busy;
+    btn.innerHTML = busy
+      ? '<i class="bi bi-arrow-repeat spin"></i> Please wait…'
+      : `<i class="bi ${iconClass}"></i> ${label}`;
+  }
+
+  function switchView(view) {
+    ["authView", "dashboardView", "newSubmissionView", "confirmView"].forEach(hide);
+    show(view);
+  }
+
+  // ---------- auth tabs ----------
+
+  $("tabLogin").addEventListener("click", () => {
+    $("tabLogin").classList.add("active");
+    $("tabRegister").classList.remove("active");
+    show("loginForm"); hide("registerForm");
+    $("authTitle").textContent = "Corresponding author sign-in";
+    $("authSubtext").textContent = "Sign in to submit a manuscript or view your submissions.";
+    setError("authError", "");
+  });
+
+  $("tabRegister").addEventListener("click", () => {
+    $("tabRegister").classList.add("active");
+    $("tabLogin").classList.remove("active");
+    show("registerForm"); hide("loginForm");
+    $("authTitle").textContent = "Create your author account";
+    $("authSubtext").textContent = "Register once, then submit manuscripts directly — no email required.";
+    setError("authError", "");
+  });
+
+  // ---------- login ----------
+
+  $("loginForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    setError("authError", "");
+    const email = $("loginEmail").value.trim().toLowerCase();
+    const password = $("loginPassword").value;
+    if (!email || !password) { setError("authError", "Enter your email and password."); return; }
+
+    setBusy("loginSubmit", true);
+    try {
+      const key = "account:" + email;
+      let result;
+      try { result = await window.storage.get(key, true); } catch { result = null; }
+      if (!result) {
+        setError("authError", "No account found with that email. Create one below.");
+        setBusy("loginSubmit", false, "Sign in", "bi-box-arrow-in-right");
+        return;
+      }
+      const account = JSON.parse(result.value);
+      if (account.password !== password) {
+        setError("authError", "Incorrect password.");
+        setBusy("loginSubmit", false, "Sign in", "bi-box-arrow-in-right");
+        return;
+      }
+      onAuthed({ name: account.name, email: account.email, affiliation: account.affiliation });
+    } catch {
+      setError("authError", "Something went wrong signing in. Please try again.");
+    }
+    setBusy("loginSubmit", false, "Sign in", "bi-box-arrow-in-right");
+  });
+
+  // ---------- register ----------
+
+  $("registerForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    setError("authError", "");
+    const name = $("regName").value.trim();
+    const affiliation = $("regAffiliation").value.trim();
+    const email = $("regEmail").value.trim().toLowerCase();
+    const password = $("regPassword").value;
+
+    if (!name || !email || !password || !affiliation) {
+      setError("authError", "Fill in your name, institution, email, and a password.");
+      return;
+    }
+
+    setBusy("registerSubmit", true);
+    try {
+      const key = "account:" + email;
+      let existing;
+      try { existing = await window.storage.get(key, true); } catch { existing = null; }
+      if (existing) {
+        setError("authError", "An account already exists with that email. Sign in instead.");
+        setBusy("registerSubmit", false, "Create account", "bi-person-plus");
+        return;
+      }
+      const account = { name, email, affiliation, password, createdAt: new Date().toISOString() };
+      await window.storage.set(key, JSON.stringify(account), true);
+      onAuthed({ name: account.name, email: account.email, affiliation: account.affiliation });
+    } catch {
+      setError("authError", "Something went wrong creating your account. Please try again.");
+    }
+    setBusy("registerSubmit", false, "Create account", "bi-person-plus");
+  });
+
+  function onAuthed(s) {
+    session = s;
+    $("sessionName").textContent = s.name;
+    $("sessionEmail").textContent = s.email;
+    show("sessionBox");
+    $("correspondingLabel").textContent = `${s.name} (${s.email})`;
+    switchView("dashboardView");
+    loadDashboard();
+  }
+
+  $("logoutBtn").addEventListener("click", () => {
+    session = null;
+    hide("sessionBox");
+    $("loginForm").reset();
+    $("registerForm").reset();
+    switchView("authView");
+  });
+
+  // ---------- dashboard ----------
+
+  async function loadDashboard() {
+    setError("dashboardError", "");
+    hide("dashboardEmpty");
+    hide("subList");
+    show("dashboardLoading");
+    $("subList").innerHTML = "";
+
+    try {
+      const listResult = await window.storage.list("manuscript:", true);
+      const keys = (listResult && listResult.keys) || [];
+      const items = [];
+      for (const k of keys) {
+        try {
+          const r = await window.storage.get(k, true);
+          if (r) {
+            const parsed = JSON.parse(r.value);
+            if (parsed.correspondingEmail === session.email) items.push(parsed);
+          }
+        } catch {
+          // skip unreadable entry
+        }
+      }
+      items.sort((a, b) => new Date(b.submittedAt) - new Date(a.submittedAt));
+      hide("dashboardLoading");
+
+      if (items.length === 0) {
+        show("dashboardEmpty");
+        return;
+      }
+
+      show("subList");
+      const list = $("subList");
+      items.forEach((s) => {
+        const row = document.createElement("div");
+        row.className = "sub-row";
+        row.innerHTML = `
+          <div style="min-width:0;">
+            <div class="sub-title"></div>
+            <div class="sub-meta"></div>
+            <span class="status-badge"><i class="bi bi-clock"></i> </span>
+          </div>
+          <button class="btn btn-soft download-btn" style="height:fit-content;">
+            <i class="bi bi-download"></i> <span></span>
+          </button>
+        `;
+        row.querySelector(".sub-title").textContent = s.title;
+        row.querySelector(".sub-meta").textContent = `Ref: ${s.id} • Submitted ${fmtDate(s.submittedAt)}`;
+        row.querySelector(".status-badge").append(document.createTextNode(s.status));
+        row.querySelector(".download-btn span").textContent = s.fileName;
+        row.querySelector(".download-btn").addEventListener("click", () => downloadFile(s));
+        list.appendChild(row);
+      });
+    } catch {
+      hide("dashboardLoading");
+      setError("dashboardError", "Couldn't load your submissions right now.");
+    }
+  }
+
+  function downloadFile(sub) {
+    try {
+      const blob = base64ToBlob(sub.fileBase64, sub.fileMime || "application/octet-stream");
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = sub.fileName || "manuscript.docx";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    } catch {
+      // ignore
+    }
+  }
+
+  $("newSubmissionBtn").addEventListener("click", openNewSubmission);
+  $("emptyNewSubmissionBtn").addEventListener("click", openNewSubmission);
+  $("backToDashboardBtn").addEventListener("click", () => {
+    switchView("dashboardView");
+    loadDashboard();
+  });
+
+  function openNewSubmission() {
+    $("submissionForm").reset();
+    pendingFile = null;
+    hide("fileNameLabel");
+    hide("fileErrorLabel");
+    setError("submitError", "");
+    switchView("newSubmissionView");
+  }
+
+  // ---------- new submission ----------
+
+  $("msFile").addEventListener("change", (e) => {
+    hide("fileErrorLabel");
+    hide("fileNameLabel");
+    pendingFile = null;
+    const f = e.target.files && e.target.files[0];
+    if (!f) return;
+
+    if (!f.name.toLowerCase().endsWith(".docx")) {
+      $("fileErrorLabel").textContent = "Please upload the manuscript as a .docx file.";
+      show("fileErrorLabel");
+      e.target.value = "";
+      return;
+    }
+    if (f.size > MAX_FILE_BYTES) {
+      $("fileErrorLabel").textContent = `This prototype accepts files up to ${(MAX_FILE_BYTES / (1024 * 1024)).toFixed(1)} MB.`;
+      show("fileErrorLabel");
+      e.target.value = "";
+      return;
+    }
+    pendingFile = f;
+    $("fileNameLabel").textContent = `Selected: ${f.name} (${(f.size / 1024).toFixed(0)} KB)`;
+    show("fileNameLabel");
+  });
+
+  $("submissionForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    setError("submitError", "");
+
+    const title = $("msTitle").value.trim();
+    const authors = $("msAuthors").value.trim();
+    const abstract = $("msAbstract").value.trim();
+    const keywords = $("msKeywords").value.trim();
+    const cover = $("msCover").value.trim();
+    const confirmOriginal = $("msConfirmOriginal").checked;
+
+    if (!title || !authors || !abstract || !keywords || !cover) {
+      setError("submitError", "Please fill in every field before submitting.");
+      return;
+    }
+    if (!confirmOriginal) {
+      setError("submitError", "Please confirm the originality declaration before submitting.");
+      return;
+    }
+    if (!pendingFile) {
+      setError("submitError", "Please attach your manuscript as a .docx file.");
+      return;
+    }
+
+    setBusy("submitBtn", true);
+    try {
+      const fileBase64 = await fileToBase64(pendingFile);
+      const id = "MS-" + Date.now().toString(36).toUpperCase();
+      const payload = {
+        id,
+        title,
+        authors,
+        correspondingName: session.name,
+        correspondingEmail: session.email,
+        affiliation: session.affiliation,
+        abstract,
+        keywords,
+        coverMessage: cover,
+        fileName: pendingFile.name,
+        fileMime: pendingFile.type || "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        fileBase64,
+        status: "Submitted",
+        submittedAt: new Date().toISOString(),
+      };
+      await window.storage.set("manuscript:" + id, JSON.stringify(payload), true);
+      lastSubmission = payload;
+      $("confirmId").textContent = payload.id;
+      $("confirmTitle").textContent = payload.title;
+      $("confirmDate").textContent = fmtDate(payload.submittedAt);
+      switchView("confirmView");
+    } catch {
+      setError("submitError", "Something went wrong submitting your manuscript. Please try again.");
+    }
+    setBusy("submitBtn", false, "Submit manuscript", "bi-send");
+  });
+
+  $("confirmDoneBtn").addEventListener("click", () => {
+    switchView("dashboardView");
+    loadDashboard();
+  });
+
+  // ---------- initial view ----------
+  switchView("authView");
+})();
+</script>
+
+</body>
+</html>
